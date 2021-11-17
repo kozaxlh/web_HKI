@@ -17,53 +17,53 @@ if (!localStorage.getItem('myUsers'))
 if (!localStorage.getItem('products'))
     products = [
         {
-            name:'Giày thể thao GG08',
-            type:'Giày',
+            name: 'Giày thể thao GG08',
+            type: 'Giày',
             price: 3900000,
             quantity: 200,
-            img:'./img/giaynam.PNG',
+            img: './img/giaynam.PNG',
         },
         {
-            name:'Giày thể thao GG08',
-            type:'Giày',
+            name: 'Giày thể thao GG08',
+            type: 'Giày',
             price: 3900000,
             quantity: 200,
-            img:'./img/giaynam.PNG',
+            img: './img/giaynam.PNG',
         },
         {
-            name:'Giày thể thao GG08',
-            type:'Giày',
+            name: 'Giày thể thao GG08',
+            type: 'Giày',
             price: 3900000,
             quantity: 200,
-            img:'./img/giaynam.PNG',
+            img: './img/giaynam.PNG',
         },
         {
-            name:'Áo nam năng động cá tính',
-            type:'Quần áo nam',
+            name: 'Áo nam năng động cá tính',
+            type: 'Quần áo nam',
             price: 3900000,
             quantity: 200,
-            img:'./img/aonam1.PNG',
+            img: './img/aonam1.PNG',
         },
         {
-            name:'Áo nam năng động cá tính',
-            type:'Quần áo nam',
+            name: 'Áo nam năng động cá tính',
+            type: 'Quần áo nam',
             price: 3900000,
             quantity: 200,
-            img:'./img/aonam1.PNG',
+            img: './img/aonam1.PNG',
         },
         {
-            name:'Áo nam năng động cá tính',
-            type:'Quần áo nam',
+            name: 'Áo nam năng động cá tính',
+            type: 'Quần áo nam',
             price: 3900000,
             quantity: 200,
-            img:'./img/aonam1.PNG',
+            img: './img/aonam1.PNG',
         },
         {
-            name:'Áo nữ',
-            type:'Quần áo nữ',
+            name: 'Áo nữ',
+            type: 'Quần áo nữ',
             price: 3900000,
             quantity: 200,
-            img:'./img/aonu1.PNG',
+            img: './img/aonu1.PNG',
         },
     ]
 
@@ -203,7 +203,7 @@ btnOpenRegister.addEventListener('click', () => {
 btnOpenLogin.addEventListener('click', () => {
     openModal(modal)
     $('.modal-form').innerHTML = htmlLogin
-        runCheckLogin()
+    runCheckLogin()
 });
 
 function tranferRegister() {
@@ -215,16 +215,16 @@ function tranferRegister() {
 function list(obj) {
     switch (obj.id) {
         case 'p0':
-            product.innerHTML ='<li class="products" ><img src="./img/aonu1.PNG" alt="product"><div class="products-content"><p class="price">3.900.000 đ</p><p class="description">áo nữ sexy </p><button class="buy">Mua ngay</button></div></li>'
+            product.innerHTML = '<li class="products" ><img src="./img/aonu1.PNG" alt="product"><div class="products-content"><p class="price">3.900.000 đ</p><p class="description">áo nữ sexy </p><button class="buy">Mua ngay</button></div></li>'
             break;
         case 'p1':
-            product.innerHTML ='<li class="products" ><img src="./img/aonam1.PNG" alt="product"><div class="products-content"><p class="price">3.900.000 đ</p><p class="description">Áo nam năng động cá tính</p><button class="buy">Mua ngay</button></div></li>'
+            product.innerHTML = '<li class="products" ><img src="./img/aonam1.PNG" alt="product"><div class="products-content"><p class="price">3.900.000 đ</p><p class="description">Áo nam năng động cá tính</p><button class="buy">Mua ngay</button></div></li>'
             break;
         case 'p2':
-            product.innerHTML ='<li class="products" ><img src="./img/giaynam.PNG" alt="product"><div class="products-content"><p class="price">3.900.000 đ</p><p class="description">Giày thể thao GG08</p><button class="buy">Mua ngay</button></div></li>'
+            product.innerHTML = '<li class="products" ><img src="./img/giaynam.PNG" alt="product"><div class="products-content"><p class="price">3.900.000 đ</p><p class="description">Giày thể thao GG08</p><button class="buy">Mua ngay</button></div></li>'
             break;
         case 'p3':
-            product.innerHTML ='<li class="products" ><img src="./img/aonu2.PNG" alt="product"><div class="products-content"><p class="price">3.900.000 đ</p><p class="description">Trang sức cho đàn ông </p><button class="buy">Mua ngay</button></div></li>'
+            product.innerHTML = '<li class="products" ><img src="./img/aonu2.PNG" alt="product"><div class="products-content"><p class="price">3.900.000 đ</p><p class="description">Trang sức cho đàn ông </p><button class="buy">Mua ngay</button></div></li>'
             break;
 
         default:
@@ -259,6 +259,7 @@ function viewTopSale(inp) {
     }
 }
 
+//========Validate=========
 //Register form
 function runCheckRegister() {
     Validator({
@@ -319,7 +320,7 @@ function runCheckRegister() {
                 isFound = true;
                 s = `Số điện thoại này đã được đăng ký`
             }
-            
+
             if (isFound) {
                 $('.warning').innerHTML = `<div class="block-warning">
                     <i class="fas fa-exclamation-circle"></i> ${s}</div>`
@@ -342,6 +343,8 @@ function runCheckRegister() {
         loginUser = users[users.length - 1];
         updateLocalStorage();
     }
+
+    enableSubmit();
 }
 
 //Login form
@@ -402,6 +405,8 @@ function runCheckLogin() {
             window.location = "./index.html"
         }
     }
+
+    enableSubmit();
 }
 
 function updateLocalStorage() {
@@ -410,6 +415,13 @@ function updateLocalStorage() {
 
     localStorage.setItem('myUsers', usersData);
     localStorage.setItem('loginUser', loginUserData)
+}
+
+function enableSubmit() {
+    $('body').addEventListener('keypress', (e) => {
+        if (e.keyCode === 13)
+            $('button[type="submit"]').click();
+    })
 }
 
 //render
@@ -427,7 +439,7 @@ function render() {
         <img src="${item.img}" alt="product" />
         <div class="products-content">
            <p class="price">${item.price} đ</p>
-           <p class="description">Giày thể thao GG08</p>
+           <p class="description">${item.name}</p>
            <button class="buy">Mua ngay</button>
         </div>
      </li>`

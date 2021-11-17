@@ -143,14 +143,14 @@ a {
    outline: none;
 }
 
-.search .ti-search {
+.search i {
    padding: 4px 14px;
    position: absolute;
    color: #fff;
    font-size: 23px;
 }
 
-.search .ti-search:hover {
+.search i:hover {
    color: #ffb70f;
 }
 
@@ -262,7 +262,7 @@ a {
 
 .top-sale {
    width: 25%;
-   position: fixed;
+   position: absolute;
    margin: 0;
    color: #fff;
    text-align: center;
