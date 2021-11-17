@@ -1,39 +1,35 @@
-const openrgt2 = document.querySelector('.js-register2')
-const openrgt = document.querySelector('.js-register')
-const modalrgt = document.querySelector('.js-register-close')
-const modal = document.querySelector('.modal')
-var topsale = document.querySelector('.top-sale select')
-var listtopsale = document.querySelector('.top-sale .product-list')
-const openlg = document.querySelector('.js-login')
-const modallgcl = document.querySelector('.js-login-close')
-const modallg = document.querySelector('.modal-login')
-var listpro = document.querySelectorAll('.nav-content-list li a')
-var product = document.querySelector('.product .product-list')
+const $ = document.querySelector.bind(document);
+const $$ = document.querySelectorAll.bind(document);
 
-function closergt(params) {
-    modal.classList.remove('open');
+const openrgt2 = $('.js-register2')
+const openrgt = $('.js-register')
+const modalrgt = $('.js-register-close')
+const modalRegister = $('.modal-register')
+const topsale = $('.top-sale select')
+const listtopsale = $('.top-sale .product-list')
+const openlg = $('.js-login')
+const modallgcl = $('.js-login-close')
+const modalLogin = $('.modal-login')
+const listpro = $$('.nav-content-list li a')
+const product = $('.product .product-list')
+
+function closeModal(modalElement) {
+    modalElement.classList.remove('open');
 }
-function openregister(params) {
-    modal.classList.add('open');
+
+function openModal(modalElement) {
+    modalElement.classList.add('open');
 }
-function openregister2(params) {
-    modallg.classList.remove('open');
-    modal.classList.add('open');
-}
-openrgt2.addEventListener('click', openregister2);
-openrgt.addEventListener('click', openregister);
-modalrgt.addEventListener('click', closergt)
+
+console.log(modalRegister)
+
+openrgt2.addEventListener('click', () => openModal(modalRegister));
+openrgt.addEventListener('click', () => openModal(modalRegister));
+modalrgt.addEventListener('click', () => closeModal(modalRegister))
 
 
-// login
-function closelg(params) {
-    modallg.classList.remove('open');
-}
-function openlogin(params) {
-    modallg.classList.add('open');
-}
-openlg.addEventListener('click', openlogin)
-modallgcl.addEventListener('click', closelg)
+openlg.addEventListener('click', () => openModal(modalLogin))
+modallgcl.addEventListener('click', () => closeModal(modalLogin))
 
 
 
@@ -51,20 +47,19 @@ function list(obj) {
         case 'p3':
             product.innerHTML = '<ul class="product-list"><li class="products" ><img src="./img/aonu2.PNG" alt="product"><div class="products-content"><p class="price">3.900.000 đ</p><p class="description">Trang sức cho đàn ông </p><button class="buy">Mua ngay</button></div></li> </ul> '
             break;
-    
+
         default:
             break;
     }
-    
+
 }
 
-var listcontents = ["Quần áo nữ","Quần áo nam","Giày nam","Trang sức"];
+let listcontents = ["Quần áo nữ", "Quần áo nam", "Giày nam", "Trang sức"];
 
-var listcnt = document.querySelector('.nav-content-list')
-var s= ''
-for (var i =0;i<listcontents.length;i++)
-{
-    s += '<li><a href="#" id="p' + i + '" onclick="list(this)">' + listcontents[i]+'</a></li>'
+let listcnt = $('.nav-content-list')
+let s = ''
+for (let i = 0; i < listcontents.length; i++) {
+    s += '<li><a href="#" id="p' + i + '" onclick="list(this)">' + listcontents[i] + '</a></li>'
 }
 listcnt.innerHTML = s;
 

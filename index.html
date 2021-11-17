@@ -1,227 +1,258 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./themify-icons/themify-icons.css">
-    <link href="https://fonts.googleapis.com/css2?family=Ceviche+One&family=Quicksand&display=swap" rel="stylesheet">
-    <title>NAK MARKET</title>
-</head>
-<body>
-    <header>
-       <div class="nav">
-        <ul class="nav-list">
-            <li><a href="">Trang chủ</a></li>
-            <li><a href="#">Tin Tức</a></li>
-            <li><a href="#">Liên Hệ</a></li>
-        </ul>
-        <div class="login-register">
-            <a href="#" class="js-login" type="button">Đăng Nhập</a> | <a href="#" class="js-register">Đăng Ký</a>
-        </div>
-        </div>
-    <div class="sub-header">
-        <span class="sign">Nak market</span>
-        <i class="slogan">Mua sắm thả ga! Săn voucher cực khủng trong hôm nay!</i>
-    </div>
-    </header>
-    <div class="content">
-        <div class="nav-content">
+   <head>
+      <meta charset="UTF-8" />
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link
+         href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap"
+         rel="stylesheet"
+      />
+      <link rel="stylesheet" href="./img/themify-icons/themify-icons.css" />
+      <link
+         href="https://fonts.googleapis.com/css2?family=Ceviche+One&family=Quicksand&display=swap"
+         rel="stylesheet"
+      />
+      <link rel="stylesheet" href="./css/Style.css" />
+      <title>NAK MARKET</title>
+   </head>
+   <body>
+      <header>
+         <div class="nav">
+            <ul class="nav-list">
+               <li><a href="">Trang chủ</a></li>
+               <li><a href="#">Tin Tức</a></li>
+               <li><a href="#">Liên Hệ</a></li>
+            </ul>
+            <div class="login-register">
+               <a href="#" class="js-login" type="button">Đăng Nhập</a> |
+               <a href="#" class="js-register">Đăng Ký</a>
+            </div>
+         </div>
+         <div class="sub-header">
+            <span class="sign">Nak market</span>
+            <i class="slogan"
+               >Mua sắm thả ga! Săn voucher cực khủng trong hôm nay!</i
+            >
+         </div>
+      </header>
+
+      <div class="content">
+         <div class="nav-content">
             <ul class="nav-content-list">
-                <li><a href="#" id="p1" onclick="list(this)">Quần áo nữ</a></li>
-                <li><a href="#" id="p2" onclick="list(this)">Quần áo nam</a></li>
-                <li><a href="#" id="p3" onclick="list(this)">Giày nam</a></li>
-                <li><a href="#" id="p4" onclick="list(this)">Trang sức</a></li>
-                <div class="list-content"></div>
+               <li><a href="#" id="p1" onclick="list(this)">Quần áo nữ</a></li>
+               <li><a href="#" id="p2" onclick="list(this)">Quần áo nam</a></li>
+               <li><a href="#" id="p3" onclick="list(this)">Giày nam</a></li>
+               <li><a href="#" id="p4" onclick="list(this)">Trang sức</a></li>
+               <div class="list-content"></div>
             </ul>
             <div class="search">
-                <input class="search-ip" type="text" placeholder="Bạn muốn mua gì ?">
-                <a href="#"><i class="ti-search"></i></a>
+               <input
+                  class="search-ip"
+                  type="text"
+                  placeholder="Bạn muốn mua gì ?"
+               />
+               <a href="#"><i class="ti-search"></i></a>
             </div>
             <div class="cart">
-                <a href="#">
-                    Giỏ Hàng
-                    <i class="ti-shopping-cart"></i>
-                </a>
+               <a href="#">
+                  Giỏ Hàng
+                  <i class="ti-shopping-cart"></i>
+               </a>
             </div>
-        </div>
-        <div class="col-2 product" >
+         </div>
+         <div class="col-2 product">
             <ul class="product-pages">
-                <li class="product-pages-number"><a href="">1</a></li>
-                <li class="product-pages-number"><a href="">2</a></li>
-                <li class="product-pages-number"><a href="">3</a></li>             
+               <li class="product-pages-number"><a href="">1</a></li>
+               <li class="product-pages-number"><a href="">2</a></li>
+               <li class="product-pages-number"><a href="">3</a></li>
             </ul>
             <ul class="product-list">
-                <li class="products">
-                    <img src="./img/aonu1.PNG" alt="product">
-                    <div class="products-content">
-                        <p class="price">3.900.000 đ</p>
-                        <p class="description">Áo nữ sexy monagocaba</p>
-                        <button class="buy">Mua ngay</button>
-                    </div>
-                </li>
-                <li class="products"><img src="./img/giaynam2.PNG" alt="product">
-                    <div class="products-content">
-                        <p class="price">3.900.000 đ</p>
-                        <p class="description">Giày thể thao GG08</p>
-                        <button class="buy">Mua ngay</button>
-                    </div>
-                </li>
-                <li class="products"><img src="./img/giaynam3.PNG" alt="product">
-                    <div class="products-content">
-                        <p class="price">3.900.000 đ</p>
-                        <p class="description">Giày thể thao GG08</p>
-                        <button class="buy">Mua ngay</button>
-                    </div>
-                </li>
-                <li class="products"><img src="./img/aonam1.PNG" alt="product">
-                    <div class="products-content">
-                        <p class="price">3.900.000 đ</p>
-                        <p class="description">Áo nam năng đọng cá tính</p>
-                        <button class="buy">Mua ngay</button>
-                    </div>
-                </li>
-                <li class="products"><img src="./img/aonam2.PNG" alt="product">
-                    <div class="products-content">
-                        <p class="price">3.900.000 đ</p>
-                        <p class="description">Giày thể thao GG08</p>
-                        <button class="buy">Mua ngay</button>
-                    </div>
-                </li>
-                <li class="products"><img src="./img/aonam3.PNG" alt="product">
-                    <div class="products-content">
-                        <p class="price">3.900.000 đ</p>
-                        <p class="description">Giày thể thao GG08</p>
-                        <button class="buy">Mua ngay</button>
-                    </div>
-                </li>
-                <li class="products"><img src="./img/aonu2.PNG" alt="product">
-                    <div class="products-content">
-                        <p class="price">3.900.000 đ</p>
-                        <p class="description">Giày thể thao GG08</p>
-                        <button class="buy">Mua ngay</button>
-                    </div>
-                </li>
-                <li class="products"><img src="./img/giaynam.PNG" alt="product">
-                    <div class="products-content">
-                        <p class="price">3.900.000 đ</p>
-                        <p class="description">Giày thể thao GG08</p>
-                        <button class="buy">Mua ngay</button>
-                    </div>
-                </li>
-                <li class="products"><img src="./img/giaynam.PNG" alt="product">
-                    <div class="products-content">
-                        <p class="price">3.900.000 đ</p>
-                        <p class="description">Giày thể thao GG08</p>
-                        <button class="buy">Mua ngay</button>
-                    </div>
-                </li>
-                <li class="products"><img src="./img/giaynam.PNG" alt="product">
-                    <div class="products-content">
-                        <p class="price">3.900.000 đ</p>
-                        <p class="description">Giày thể thao GG08</p>
-                        <button class="buy">Mua ngay</button>
-                    </div>
-                </li>
-                <li class="products"><img src="./img/giaynam.PNG" alt="product">
-                    <div class="products-content">
-                        <p class="price">3.900.000 đ</p>
-                        <p class="description">Giày thể thao GG08</p>
-                        <button class="buy">Mua ngay</button>
-                    </div>
-                </li>
-                
-                
+               <li class="products">
+                  <img src="./img/aonu1.PNG" alt="product" />
+                  <div class="products-content">
+                     <p class="price">3.900.000 đ</p>
+                     <p class="description">Áo nữ sexy monagocaba</p>
+                     <button class="buy">Mua ngay</button>
+                  </div>
+               </li>
+               <li class="products">
+                  <img src="./img/giaynam2.PNG" alt="product" />
+                  <div class="products-content">
+                     <p class="price">3.900.000 đ</p>
+                     <p class="description">Giày thể thao GG08</p>
+                     <button class="buy">Mua ngay</button>
+                  </div>
+               </li>
+               <li class="products">
+                  <img src="./img/giaynam3.PNG" alt="product" />
+                  <div class="products-content">
+                     <p class="price">3.900.000 đ</p>
+                     <p class="description">Giày thể thao GG08</p>
+                     <button class="buy">Mua ngay</button>
+                  </div>
+               </li>
+               <li class="products">
+                  <img src="./img/aonam1.PNG" alt="product" />
+                  <div class="products-content">
+                     <p class="price">3.900.000 đ</p>
+                     <p class="description">Áo nam năng đọng cá tính</p>
+                     <button class="buy">Mua ngay</button>
+                  </div>
+               </li>
+               <li class="products">
+                  <img src="./img/aonam2.PNG" alt="product" />
+                  <div class="products-content">
+                     <p class="price">3.900.000 đ</p>
+                     <p class="description">Giày thể thao GG08</p>
+                     <button class="buy">Mua ngay</button>
+                  </div>
+               </li>
+               <li class="products">
+                  <img src="./img/aonam3.PNG" alt="product" />
+                  <div class="products-content">
+                     <p class="price">3.900.000 đ</p>
+                     <p class="description">Giày thể thao GG08</p>
+                     <button class="buy">Mua ngay</button>
+                  </div>
+               </li>
+               <li class="products">
+                  <img src="./img/aonu2.PNG" alt="product" />
+                  <div class="products-content">
+                     <p class="price">3.900.000 đ</p>
+                     <p class="description">Giày thể thao GG08</p>
+                     <button class="buy">Mua ngay</button>
+                  </div>
+               </li>
+               <li class="products">
+                  <img src="./img/giaynam.PNG" alt="product" />
+                  <div class="products-content">
+                     <p class="price">3.900.000 đ</p>
+                     <p class="description">Giày thể thao GG08</p>
+                     <button class="buy">Mua ngay</button>
+                  </div>
+               </li>
+               <li class="products">
+                  <img src="./img/giaynam.PNG" alt="product" />
+                  <div class="products-content">
+                     <p class="price">3.900.000 đ</p>
+                     <p class="description">Giày thể thao GG08</p>
+                     <button class="buy">Mua ngay</button>
+                  </div>
+               </li>
+               <li class="products">
+                  <img src="./img/giaynam.PNG" alt="product" />
+                  <div class="products-content">
+                     <p class="price">3.900.000 đ</p>
+                     <p class="description">Giày thể thao GG08</p>
+                     <button class="buy">Mua ngay</button>
+                  </div>
+               </li>
+               <li class="products">
+                  <img src="./img/giaynam.PNG" alt="product" />
+                  <div class="products-content">
+                     <p class="price">3.900.000 đ</p>
+                     <p class="description">Giày thể thao GG08</p>
+                     <button class="buy">Mua ngay</button>
+                  </div>
+               </li>
             </ul>
-        </div>
-        <div class="col-2 ">
-            <div class="top-sale">
-                <h3>Bán chạy</h3>
-            <select name="" id="" onchange="viewtopsale(this.value);">
-                <option value="ngay">Ngày</option>
-                <option value="thang">Tháng</option>
-                <option value="nam">Năm</option>
-            </select>
-            <ul class="product-list">
-                <li class="products">
-                    <img src="./img/aonu1.PNG" alt="product">
-                    <div class="products-content">
-                        <p class="price">3.900.000 đ</p>
-                        <p class="description">Áo nữ sexy baramonaca </p>
-                        <button class="buy">Mua ngay</button>
-                    </div>
-                </li>
-                <li class="products"><img src="./img/aonam2.PNG" alt="product">
-                    <div class="products-content">
-                        <p class="price">3.900.000 đ</p>
-                        <p class="description">Giày thể thao GG08</p>
-                        <button class="buy">Mua ngay</button>
-                    </div>
-                </li>
-                
-            </ul>
-            </div>
-        </div>
-        <div class="clear"></div>
-    </div>
-    <div class="modal">
-        <div class="register-form">
-            <form action="facebook.com">
-                <div class="register-form-header">
-                    <a href="" ><i class="ti-close js-register-close"></i></a>
-                    <h2>Đăng ký</h2>
-                </div>
-                <div class="register-form-body">
-                    <div class="col-2 register-info">
-                        <p>Họ tên </p>
-                        <input type="text" required placeholder="Tên">
-                        <p>Địa chỉ</p>
-                        <input type="text" required placeholder="Địa chỉ">
-                        <p>Sđt </p>
-                        <input type="text" required placeholder="sdt">
-                        <p>Giới Tính</p>
-                        <input type="radio" id="nam" name="gioitinh" value="nam">
-                        <label for="nam">Nam</label>
-                        <input type="radio" id="nu" name="gioitinh" value="Nữ">
-                        <label for="nu">Nữ</label>
-                    </div>
-                    <div class="col-2 register">
-                        <p>Tài Khoản</p> <input required type="text">
-                        <p>Mật Khẩu</p> <input required type="text">
-                        <p>Nhập Lại Mật Khẩu</p> <input required type="text">
-                    </div> 
-                    <div class="clear"></div> 
-                </div>
-                <div class="register-form-footer">
-                    <input type="submit" value="Đăng ký">
-                </div>
-            </form>
-        </div>
-    </div>
+         </div>
 
-    <div class="modal-login">
-        <div class="login-form">
+         <div class="col-2">
+            <div class="top-sale">
+               <h3>Bán chạy</h3>
+               <select name="" id="" onchange="viewtopsale(this.value);">
+                  <option value="ngay">Ngày</option>
+                  <option value="thang">Tháng</option>
+                  <option value="nam">Năm</option>
+               </select>
+               <ul class="product-list">
+                  <li class="products">
+                     <img src="./img/aonu1.PNG" alt="product" />
+                     <div class="products-content">
+                        <p class="price">3.900.000 đ</p>
+                        <p class="description">Áo nữ sexy baramonaca</p>
+                        <button class="buy">Mua ngay</button>
+                     </div>
+                  </li>
+                  <li class="products">
+                     <img src="./img/aonam2.PNG" alt="product" />
+                     <div class="products-content">
+                        <p class="price">3.900.000 đ</p>
+                        <p class="description">Giày thể thao GG08</p>
+                        <button class="buy">Mua ngay</button>
+                     </div>
+                  </li>
+               </ul>
+            </div>
+         </div>
+         <div class="clear"></div>
+      </div>
+
+      <div class="modal-register">
+         <div class="register-form">
             <form action="facebook.com">
-                <div class="login-form-header">
-                    <a href=""><i class="ti-close js-login-close"></i></a>
-                    <h2>Đăng Nhập</h2>
-                </div>
-                <div class="login-form-body">              
-                    <div class="col-2 login-in">
-                        <p>Tài Khoản</p> <input type="text">
-                        <p>Mật Khẩu</p> <input type="text">
-                        <p>Chưa có tài khoản? <a href="#" class="js-register2">Đăng ký</a></p>
-                    </div>
-                    <div class="clear"></div>
-                </div>
-                <div class="login-form-footer">
-                    <input type="submit" value="Đăng nhập">
-                </div>
+               <div class="register-form-header">
+                  <a href=""><i class="ti-close js-register-close"></i></a>
+                  <h2>Đăng ký</h2>
+               </div>
+               <div class="register-form-body">
+                  <div class="col-2 register-info">
+                     <p>Họ tên</p>
+                     <input type="text" required placeholder="Tên" />
+                     <p>Địa chỉ</p>
+                     <input type="text" required placeholder="Địa chỉ" />
+                     <p>Sđt</p>
+                     <input type="text" required placeholder="sdt" />
+                     <p>Giới Tính</p>
+                     <input type="radio" id="nam" name="gioitinh" value="nam" />
+                     <label for="nam">Nam</label>
+                     <input type="radio" id="nu" name="gioitinh" value="Nữ" />
+                     <label for="nu">Nữ</label>
+                  </div>
+                  <div class="col-2 register">
+                     <p>Tài Khoản</p>
+                     <input required type="text" />
+                     <p>Mật Khẩu</p>
+                     <input required type="text" />
+                     <p>Nhập Lại Mật Khẩu</p>
+                     <input required type="text" />
+                  </div>
+                  <div class="clear"></div>
+               </div>
+               <div class="register-form-footer">
+                  <input type="submit" value="Đăng ký" />
+               </div>
             </form>
-        </div>
-    </div>
-    <script src="./index.js">
-        </script>
-</body>
+         </div>
+      </div>
+
+      <div class="modal-login">
+         <div class="login-form">
+            <form action="facebook.com">
+               <div class="login-form-header">
+                  <a href=""><i class="ti-close js-login-close"></i></a>
+                  <h2>Đăng Nhập</h2>
+               </div>
+               <div class="login-form-body">
+                  <div class="col-2 login-in">
+                     <p>Tài Khoản</p>
+                     <input type="text" />
+                     <p>Mật Khẩu</p>
+                     <input type="text" />
+                     <p>
+                        Chưa có tài khoản?
+                        <a href="#" class="js-register2">Đăng ký</a>
+                     </p>
+                  </div>
+                  <div class="clear"></div>
+               </div>
+               <div class="login-form-footer">
+                  <input type="submit" value="Đăng nhập" />
+               </div>
+            </form>
+         </div>
+      </div>
+      <script src="./src/index.js"></script>
+   </body>
 </html>
