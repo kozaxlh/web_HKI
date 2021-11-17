@@ -3,6 +3,7 @@ const $$ = document.querySelectorAll.bind(document);
 
 let users = JSON.parse(localStorage.getItem('myUsers'));
 let loginUser = JSON.parse(localStorage.getItem('loginUser'))
+let products = JSON.parse(localStorage.getItem('products'))
 
 if (!localStorage.getItem('myUsers'))
     users = [{
@@ -11,6 +12,63 @@ if (!localStorage.getItem('myUsers'))
         phone: "0142125671",
         typeUser: "admin",
     }]
+
+
+if (!localStorage.getItem('products'))
+    products = [
+        {
+            name:'Giày thể thao GG08',
+            type:'Giày',
+            price: 3900000,
+            quantity: 200,
+            img:'./img/giaynam.PNG',
+        },
+        {
+            name:'Giày thể thao GG08',
+            type:'Giày',
+            price: 3900000,
+            quantity: 200,
+            img:'./img/giaynam.PNG',
+        },
+        {
+            name:'Giày thể thao GG08',
+            type:'Giày',
+            price: 3900000,
+            quantity: 200,
+            img:'./img/giaynam.PNG',
+        },
+        {
+            name:'Áo nam năng động cá tính',
+            type:'Quần áo nam',
+            price: 3900000,
+            quantity: 200,
+            img:'./img/aonam1.PNG',
+        },
+        {
+            name:'Áo nam năng động cá tính',
+            type:'Quần áo nam',
+            price: 3900000,
+            quantity: 200,
+            img:'./img/aonam1.PNG',
+        },
+        {
+            name:'Áo nam năng động cá tính',
+            type:'Quần áo nam',
+            price: 3900000,
+            quantity: 200,
+            img:'./img/aonam1.PNG',
+        },
+        {
+            name:'Áo nữ',
+            type:'Quần áo nữ',
+            price: 3900000,
+            quantity: 200,
+            img:'./img/aonu1.PNG',
+        },
+    ]
+
+updateLocalStorage()
+
 
 const modal = $('.modal')
 const btnOpenRegister = $('.js-register')
@@ -23,6 +81,7 @@ const listtopsale = $('.top-sale .product-list')
 const listpro = $$('.nav-content-list li a')
 const product = $('.product .product-list')
 
+// Modal
 function closeModal(modalElement) {
     modalElement.classList.remove('open');
 }
@@ -152,20 +211,20 @@ function tranferRegister() {
     runCheckRegister();
 }
 
-
+// Content Code
 function list(obj) {
     switch (obj.id) {
         case 'p0':
-            product.innerHTML = '<ul class="product-list"><li class="products" ><img src="./img/aonu1.PNG" alt="product"><div class="products-content"><p class="price">3.900.000 đ</p><p class="description">áo nữ sexy </p><button class="buy">Mua ngay</button></div></li> </ul> '
+            product.innerHTML ='<li class="products" ><img src="./img/aonu1.PNG" alt="product"><div class="products-content"><p class="price">3.900.000 đ</p><p class="description">áo nữ sexy </p><button class="buy">Mua ngay</button></div></li>'
             break;
         case 'p1':
-            product.innerHTML = '<ul class="product-list"><li class="products" ><img src="./img/aonam1.PNG" alt="product"><div class="products-content"><p class="price">3.900.000 đ</p><p class="description">Áo nam năng động cá tính</p><button class="buy">Mua ngay</button></div></li> </ul> '
+            product.innerHTML ='<li class="products" ><img src="./img/aonam1.PNG" alt="product"><div class="products-content"><p class="price">3.900.000 đ</p><p class="description">Áo nam năng động cá tính</p><button class="buy">Mua ngay</button></div></li>'
             break;
         case 'p2':
-            product.innerHTML = '<ul class="product-list"><li class="products" ><img src="./img/giaynam.PNG" alt="product"><div class="products-content"><p class="price">3.900.000 đ</p><p class="description">Giày thể thao GG08</p><button class="buy">Mua ngay</button></div></li> </ul> '
+            product.innerHTML ='<li class="products" ><img src="./img/giaynam.PNG" alt="product"><div class="products-content"><p class="price">3.900.000 đ</p><p class="description">Giày thể thao GG08</p><button class="buy">Mua ngay</button></div></li>'
             break;
         case 'p3':
-            product.innerHTML = '<ul class="product-list"><li class="products" ><img src="./img/aonu2.PNG" alt="product"><div class="products-content"><p class="price">3.900.000 đ</p><p class="description">Trang sức cho đàn ông </p><button class="buy">Mua ngay</button></div></li> </ul> '
+            product.innerHTML ='<li class="products" ><img src="./img/aonu2.PNG" alt="product"><div class="products-content"><p class="price">3.900.000 đ</p><p class="description">Trang sức cho đàn ông </p><button class="buy">Mua ngay</button></div></li>'
             break;
 
         default:
@@ -246,18 +305,28 @@ function runCheckRegister() {
 
     function checkRegister(data) {
         let isFound = false;
+        let s = ``
         for (let user of users) {
-            if (data.email === user.email) {
+            if (data.email === user.email && data.phone === user.phone) {
                 isFound = true;
+                s = `Email và số điện thoại này đã được đăng ký`
+            }
+            else if (data.email === user.email) {
+                isFound = true;
+                s = `Email này đã được đăng ký. `
+            }
+            else if (data.phone === user.phone) {
+                isFound = true;
+                s = `Số điện thoại này đã được đăng ký`
+            }
+            
+            if (isFound) {
+                $('.warning').innerHTML = `<div class="block-warning">
+                    <i class="fas fa-exclamation-circle"></i> ${s}</div>`
                 break;
             }
         }
-        if (isFound) {
-            $('.warning').innerHTML = `<div class="block-warning">
-                 <i class="fas fa-exclamation-circle"></i> Email này đã đươc đăng ký
-              </div>`
-        }
-        else {
+        if (!isFound) {
             updateUsers(data)
             window.location = "./index.html"
         }
@@ -343,9 +412,6 @@ function updateLocalStorage() {
     localStorage.setItem('loginUser', loginUserData)
 }
 
-runCheckRegister();
-runCheckLogin
-
 //render
 function render() {
     let myLogo = $('.nav .login-register');
@@ -355,6 +421,19 @@ function render() {
           <a href="./index.html" id="logout" onclick="logout()">Đăng xuất</a>
        </div>`
     }
+
+    let html = products.map(item => {
+        return `<li class="products">
+        <img src="${item.img}" alt="product" />
+        <div class="products-content">
+           <p class="price">${item.price} đ</p>
+           <p class="description">Giày thể thao GG08</p>
+           <button class="buy">Mua ngay</button>
+        </div>
+     </li>`
+    })
+
+    $('.product-list').innerHTML = html.join("");
 }
 
 function logout() {
