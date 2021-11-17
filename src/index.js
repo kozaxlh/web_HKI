@@ -28,14 +28,14 @@ if (!localStorage.getItem('products'))
             type: 'Giày',
             price: 3900000,
             quantity: 200,
-            img: './img/giaynam.PNG',
+            img: './img/giaynam2.PNG',
         },
         {
             name: 'Giày thể thao GG08',
             type: 'Giày',
             price: 3900000,
             quantity: 200,
-            img: './img/giaynam.PNG',
+            img: './img/giaynam3.PNG',
         },
         {
             name: 'Áo nam năng động cá tính',
@@ -49,14 +49,14 @@ if (!localStorage.getItem('products'))
             type: 'Quần áo nam',
             price: 3900000,
             quantity: 200,
-            img: './img/aonam1.PNG',
+            img: './img/aonam2.PNG',
         },
         {
             name: 'Áo nam năng động cá tính',
             type: 'Quần áo nam',
             price: 3900000,
             quantity: 200,
-            img: './img/aonam1.PNG',
+            img: './img/aonam3.PNG',
         },
         {
             name: 'Áo nữ',
