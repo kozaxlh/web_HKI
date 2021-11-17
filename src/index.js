@@ -31,117 +31,126 @@ function openModal(modalElement) {
     modalElement.classList.add('open');
 }
 
+let htmlRegister = `
+<div class="form-header">
+<a href="" class="js-close"><i class="fas fa-times"></i></a>
+<h2>Đăng ký</h2>
+</div>
+<div class="warning"></div>
+<form class="form-content form-register">
+<div class="form-group">
+   <label class="form-label">Email</label>
+   <input
+      class="form-input"
+      type="email"
+      name="email"
+      placeholder="Example@email.com"
+      value=""                
+   />
+   <span class="message-error"></span>
+</div>
+<div class="form-group">
+   <label class="form-label">Mật khẩu</label>
+   <input
+      class="form-input"
+      type="password"
+      name="password"
+      placeholder="Nhập mật khẩu từ 6 kí tự trở lên"
+      value=""                
+   />
+   <span class="message-error"></span>
+</div>
+<div class="form-group">
+   <label class="form-label">Nhập lại mật khảu</label>
+   <input
+      class="form-input"
+      type="password"
+      name="comfirmpass"
+      placeholder="Nhập lại mật khẩu"
+      value=""                
+   />
+   <span class="message-error"></span>
+</div>
+<div class="form-group">
+   <label class="form-label">SĐT</label>
+   <input
+      class="form-input"
+      type="number"
+      name="phone"
+      placeholder="0123456789"
+      value=""                
+   />
+   <span class="message-error"></span>
+</div>
+<div class="form-group">
+   <label class="form-label"></label>
+   <div>
+      <input
+         class="form-input"
+         type="checkbox"
+         name="checkbox"
+         placeholder="0123456789"
+         value=""                
+      />
+      Tôi đồng ý với <a href="#">Điều khoản sử dụng</a>
+   </div>
+   <span class="message-error"></span>
+</div>
+<button type="submit" class="form-submit">Submit</button>
+</form>
+`
+
+let htmlLogin = `
+<div class="form-header">
+    <a href =""><i class="fas fa-times"></i></a>
+    <h2>Đăng Nhập</h2>
+</div>
+<div class="warning">
+</div>
+<form class="form-content form-login">
+   <div class="form-group">
+      <label class="form-label">Tài khoản email</label>
+      <input
+         class="form-input login-input"
+         type="email"
+         name="email"
+         placeholder="example@gmail.com"
+         value=""
+      />
+      <span class="message-error"></span>
+   </div>
+   <div class="form-group">
+      <label class="form-label">Mật khẩu</label>
+      <input
+         class="form-input login-input"
+         type="password"
+         name="password"
+         placeholder="Nhập mật khẩu"
+         value=""
+      />
+      <span class="message-error"></span>
+   </div>
+   <button type="submit" class="btn-submit form-submit">Submit</button>
+   <p>Bạn chưa có tài khoản? <a href="#" onclick="tranferRegister()">Đăng ký</a></p>
+</form>
+`
+
 btnOpenRegister.addEventListener('click', () => {
     openModal(modal)
-    $('.modal-form').innerHTML = `
-    <div class="form-header">
-    <a href="" class="js-close"><i class="fas fa-times"></i></a>
-    <h2>Đăng ký</h2>
- </div>
- <div class="warning"></div>
- <form class="form-content form-register">
-    <div class="form-group">
-       <label class="form-label">Email</label>
-       <input
-          class="form-input"
-          type="email"
-          name="email"
-          placeholder="Example@email.com"
-          value=""                
-       />
-       <span class="message-error"></span>
-    </div>
-    <div class="form-group">
-       <label class="form-label">Mật khẩu</label>
-       <input
-          class="form-input"
-          type="password"
-          name="password"
-          placeholder="Nhập mật khẩu từ 6 kí tự trở lên"
-          value=""                
-       />
-       <span class="message-error"></span>
-    </div>
-    <div class="form-group">
-       <label class="form-label">Nhập lại mật khảu</label>
-       <input
-          class="form-input"
-          type="password"
-          name="comfirmpass"
-          placeholder="Nhập lại mật khẩu"
-          value=""                
-       />
-       <span class="message-error"></span>
-    </div>
-    <div class="form-group">
-       <label class="form-label">SĐT</label>
-       <input
-          class="form-input"
-          type="number"
-          name="phone"
-          placeholder="0123456789"
-          value=""                
-       />
-       <span class="message-error"></span>
-    </div>
-    <div class="form-group">
-       <label class="form-label"></label>
-       <div>
-          <input
-             class="form-input"
-             type="checkbox"
-             name="checkbox"
-             placeholder="0123456789"
-             value=""                
-          />
-          Tôi đồng ý với <a href="#">Điều khoản sử dụng</a>
-       </div>
-       <span class="message-error"></span>
-    </div>
-    <button type="submit" class="form-submit">Submit</button>
- </form>
-    `
+    $('.modal-form').innerHTML = htmlRegister
     runCheckRegister()
 });
 
 btnOpenLogin.addEventListener('click', () => {
     openModal(modal)
-    $('.modal-form').innerHTML = `
-            <div class="form-header">
-                <a href =""><i class="fas fa-times"></i></a>
-                <h2>Đăng Nhập</h2>
-            </div>
-            <div class="warning">
-            </div>
-            <form class="form-content form-login">
-               <div class="form-group">
-                  <label class="form-label">Tài khoản email</label>
-                  <input
-                     class="form-input login-input"
-                     type="email"
-                     name="email"
-                     placeholder="example@gmail.com"
-                     value=""
-                  />
-                  <span class="message-error"></span>
-               </div>
-               <div class="form-group">
-                  <label class="form-label">Mật khẩu</label>
-                  <input
-                     class="form-input login-input"
-                     type="password"
-                     name="password"
-                     placeholder="Nhập mật khẩu"
-                     value=""
-                  />
-                  <span class="message-error"></span>
-               </div>
-               <button type="submit" class="btn-submit form-submit">Submit</button>
-               <p>Bạn chưa có tài khoản? <a href="./register.html">Đăng ký</a></p>
-            </form>
-    `
-    runCheckLogin()
+    $('.modal-form').innerHTML = htmlLogin
+        runCheckLogin()
 });
+
+function tranferRegister() {
+    $('.modal-form').innerHTML = htmlRegister
+    runCheckRegister();
+}
 
 
 function list(obj) {
@@ -352,6 +361,6 @@ function logout() {
     loginUser = null;
     updateLocalStorage();
     render();
- }
+}
 
 render()

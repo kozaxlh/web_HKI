@@ -327,6 +327,14 @@ a {
    background: #faa32c;
 }
 
+.warning .block-warning {
+   margin: 20px 28px;
+   margin-bottom: 0;
+   border: 1px solid #f10;
+   padding: 8px;
+   background: rgba(255, 15, 0, 0.3);
+}
+
 .form-content,
 .form-content .form-group  {
    display: flex;
@@ -334,7 +342,7 @@ a {
 }
 
 .form-content {
-   padding: 20px;
+   padding: 12px 20px;
 }
 
 .form-content .message-error {
