@@ -371,6 +371,10 @@ a {
 .modal-form .form-submit {
    height: 36px;
    margin: 8px;
+   border: 0;
+   background: #00a2e8;
+   color: #fff;
+   cursor: pointer;
 }
 
 .open {
