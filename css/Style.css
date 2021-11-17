@@ -5,6 +5,16 @@
    font-family: "Quicksand", sans-serif;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+   -moz-appearance: textfield;
+}
+
 .clear {
    clear: both;
 }
@@ -49,6 +59,15 @@ a {
    position: absolute;
    right: 100px;
    color: #fff;
+}
+
+.login-register .user-login {
+   font-size: 16px;
+}
+
+.user-login #logout{
+   font-size: 16px;
+   line-height: 14px;
 }
 
 .login-register a {
@@ -260,7 +279,11 @@ a {
    outline: none;
 }
 
-.modal-register {
+.clear {
+   clear: both;
+}
+
+.modal {
    position: fixed;
    top: 0;
    left: 0;
@@ -272,16 +295,16 @@ a {
    background: rgba(0, 0, 0, 0.3);
 }
 
-.register-form {
+.modal-form {
    width: 800px;
    position: relative;
    animation: scrollmodal ease 0.6s;
    background: #fff;
 }
 
-.register-form-header {
+.form-header {
+   padding: 28px;
    position: relative;
-   padding: 36px;
    display: flex;
    align-items: center;
    justify-content: center;
@@ -291,7 +314,7 @@ a {
    text-transform: uppercase;
 }
 
-.register-form-header .ti-close {
+.form-header i {
    padding: 12px;
    position: absolute;
    right: 0;
@@ -300,148 +323,54 @@ a {
    color: #fff;
 }
 
-.register-form-header .ti-close:hover {
+.form-header i:hover {
    background: #faa32c;
 }
 
-.clear {
-   clear: both;
-}
-
-.register-form-body {
-   margin: 0 40px 40px;
-}
-
-.register-form-body input[type="text"] {
-   width: 80%;
-   padding: 6px;
-   font-size: 16px;
-}
-
-.register-form-body input:focus {
-   border: 2px solid #ffb70f;
-   outline: #ffb70f;
-}
-
-select:hover {
-   opacity: 0.7;
-   cursor: pointer;
-}
-
-.register-form p {
-   margin-top: 10px;
-}
-
-.register-info {
-   width: 50%;
-}
-
-.register {
-   width: 50%;
-}
-
-.register-form-footer input {
-   margin: 0 40px 40px;
-   padding: 6px;
-   border: none;
-   border-radius: 2px;
-   color: #fff;
-   background: #faa32c;
-   font-size: 16px;
-}
-
-.register-form-footer input:hover {
-   opacity: 0.7;
-   cursor: pointer;
-}
-
-.modal-login {
-   background: rgba(0, 0, 0, 0.3);
-   top: 0;
-   left: 0;
-   right: 0;
-   bottom: 0;
-   display: none;
-   align-items: center;
-   justify-content: center;
-   position: fixed;
-}
-
-.login-form {
-   width: 800px;
-   background: #fff;
-   position: relative;
-   animation: scrollmodal ease 0.6s;
-}
-
-.login-form-header {
-   background: #00a2e8;
-   color: #fff;
-   position: relative;
+.form-content,
+.form-content .form-group  {
    display: flex;
-   align-items: center;
-   justify-content: center;
-   letter-spacing: 2px;
-   text-transform: uppercase;
-   padding: 36px;
+   flex-direction: column;
 }
 
-.login-form-header .ti-close {
-   color: #fff;
-   position: absolute;
-   right: 0;
-   top: 0;
-   font-size: 28px;
-   padding: 12px;
+.form-content {
+   padding: 20px;
 }
 
-.login-form-header .ti-close:hover {
-   background: #faa32c;
+.form-content .message-error {
+   padding-top: 2px;
+   font-size: 14px;
+   color: #f10;
 }
 
-.clear {
-   clear: both;
+.form-content p {
+   margin: 8px;
 }
 
-.login-form-body {
-   margin: 0 40px 40px;
+.message-error i {
+   padding-right: 6px;
 }
 
-.login-form-body input {
-   width: 80%;
-   padding: 6px;
-   font-size: 16px;
+.form-group {
+   padding: 8px;
 }
 
-.login-form p {
-   margin-top: 10px;
+.form-group .form-input {
+   margin: 2px 0;
+   padding: 8px;
 }
 
-.login-info {
-   width: 50%;
-}
-
-.login-in {
-   width: 50%;
-}
-
-.login-form-footer input {
-   margin: 0 40px 40px;
-   font-size: 16px;
-   padding: 6px;
-   color: #fff;
-   background: #faa32c;
-   border: none;
-   border-radius: 2px;
-}
-
-.login-form-footer input:hover {
-   opacity: 0.7;
-   cursor: pointer;
+.modal-form .form-submit {
+   height: 36px;
+   margin: 8px;
 }
 
 .open {
    display: flex;
+}
+
+.invalid {
+   border: 1px solid #f10!important;
 }
 
 @keyframes scrollmodal {

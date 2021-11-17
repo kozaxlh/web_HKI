@@ -7,12 +7,16 @@
          href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap"
          rel="stylesheet"
       />
-      <link rel="stylesheet" href="./img/themify-icons/themify-icons.css" />
       <link
          href="https://fonts.googleapis.com/css2?family=Ceviche+One&family=Quicksand&display=swap"
          rel="stylesheet"
       />
       <link rel="stylesheet" href="./css/Style.css" />
+      <link
+         rel="stylesheet"
+         href="./img/fontawesome-free-5.12.1-web/css/all.css"
+      />
+      <script src="./src/validator.js"></script>
       <title>NAK MARKET</title>
    </head>
    <body>
@@ -24,7 +28,7 @@
                <li><a href="#">Liên Hệ</a></li>
             </ul>
             <div class="login-register">
-               <a href="#" class="js-login" type="button">Đăng Nhập</a> |
+               <a href="#" class="js-login">Đăng Nhập</a> |
                <a href="#" class="js-register">Đăng Ký</a>
             </div>
          </div>
@@ -161,7 +165,7 @@
          <div class="col-2">
             <div class="top-sale">
                <h3>Bán chạy</h3>
-               <select name="" id="" onchange="viewtopsale(this.value);">
+               <select name="" id="" onchange="viewTopSale(this.value);">
                   <option value="ngay">Ngày</option>
                   <option value="thang">Tháng</option>
                   <option value="nam">Năm</option>
@@ -189,70 +193,13 @@
          <div class="clear"></div>
       </div>
 
-      <div class="modal-register">
-         <div class="register-form">
-            <form action="facebook.com">
-               <div class="register-form-header">
-                  <a href=""><i class="ti-close js-register-close"></i></a>
-                  <h2>Đăng ký</h2>
-               </div>
-               <div class="register-form-body">
-                  <div class="col-2 register-info">
-                     <p>Họ tên</p>
-                     <input type="text" required placeholder="Tên" />
-                     <p>Địa chỉ</p>
-                     <input type="text" required placeholder="Địa chỉ" />
-                     <p>Sđt</p>
-                     <input type="text" required placeholder="sdt" />
-                     <p>Giới Tính</p>
-                     <input type="radio" id="nam" name="gioitinh" value="nam" />
-                     <label for="nam">Nam</label>
-                     <input type="radio" id="nu" name="gioitinh" value="Nữ" />
-                     <label for="nu">Nữ</label>
-                  </div>
-                  <div class="col-2 register">
-                     <p>Tài Khoản</p>
-                     <input required type="text" />
-                     <p>Mật Khẩu</p>
-                     <input required type="text" />
-                     <p>Nhập Lại Mật Khẩu</p>
-                     <input required type="text" />
-                  </div>
-                  <div class="clear"></div>
-               </div>
-               <div class="register-form-footer">
-                  <input type="submit" value="Đăng ký" />
-               </div>
-            </form>
+      <div class="modal">
+         <div class="modal-form">
+            
          </div>
       </div>
 
-      <div class="modal-login">
-         <div class="login-form">
-            <form action="facebook.com">
-               <div class="login-form-header">
-                  <a href=""><i class="ti-close js-login-close"></i></a>
-                  <h2>Đăng Nhập</h2>
-               </div>
-               <div class="login-form-body">
-                  <div class="col-2 login-in">
-                     <p>Tài Khoản</p>
-                     <input type="text" />
-                     <p>Mật Khẩu</p>
-                     <input type="text" />
-                     <p>
-                        Chưa có tài khoản?
-                        <a href="#" class="js-register2">Đăng ký</a>
-                     </p>
-                  </div>
-                  <div class="clear"></div>
-               </div>
-               <div class="login-form-footer">
-                  <input type="submit" value="Đăng nhập" />
-               </div>
-            </form>
-         </div>
-      </div>
       <script src="./src/index.js"></script>
    </body>
 </html>
+

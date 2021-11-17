@@ -1,15 +1,25 @@
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 
-const openrgt2 = $('.js-register2')
-const openrgt = $('.js-register')
-const modalrgt = $('.js-register-close')
-const modalRegister = $('.modal-register')
+let users = JSON.parse(localStorage.getItem('myUsers'));
+let loginUser = JSON.parse(localStorage.getItem('loginUser'))
+
+if (!localStorage.getItem('myUsers'))
+    users = [{
+        email: "congty@gmail.com",
+        password: "12345678",
+        phone: "0142125671",
+        typeUser: "admin",
+    }]
+
+const modal = $('.modal')
+const btnOpenRegister = $('.js-register')
+const btnOpenLogin = $('.js-login')
+
 const topsale = $('.top-sale select')
 const listtopsale = $('.top-sale .product-list')
-const openlg = $('.js-login')
-const modallgcl = $('.js-login-close')
-const modalLogin = $('.modal-login')
+
+
 const listpro = $$('.nav-content-list li a')
 const product = $('.product .product-list')
 
@@ -21,16 +31,117 @@ function openModal(modalElement) {
     modalElement.classList.add('open');
 }
 
-console.log(modalRegister)
+btnOpenRegister.addEventListener('click', () => {
+    openModal(modal)
+    $('.modal-form').innerHTML = `
+    <div class="form-header">
+    <a href="" class="js-close"><i class="fas fa-times"></i></a>
+    <h2>Đăng ký</h2>
+ </div>
+ <div class="warning"></div>
+ <form class="form-content form-register">
+    <div class="form-group">
+       <label class="form-label">Email</label>
+       <input
+          class="form-input"
+          type="email"
+          name="email"
+          placeholder="Example@email.com"
+          value=""                
+       />
+       <span class="message-error"></span>
+    </div>
+    <div class="form-group">
+       <label class="form-label">Mật khẩu</label>
+       <input
+          class="form-input"
+          type="password"
+          name="password"
+          placeholder="Nhập mật khẩu từ 6 kí tự trở lên"
+          value=""                
+       />
+       <span class="message-error"></span>
+    </div>
+    <div class="form-group">
+       <label class="form-label">Nhập lại mật khảu</label>
+       <input
+          class="form-input"
+          type="password"
+          name="comfirmpass"
+          placeholder="Nhập lại mật khẩu"
+          value=""                
+       />
+       <span class="message-error"></span>
+    </div>
+    <div class="form-group">
+       <label class="form-label">SĐT</label>
+       <input
+          class="form-input"
+          type="number"
+          name="phone"
+          placeholder="0123456789"
+          value=""                
+       />
+       <span class="message-error"></span>
+    </div>
+    <div class="form-group">
+       <label class="form-label"></label>
+       <div>
+          <input
+             class="form-input"
+             type="checkbox"
+             name="checkbox"
+             placeholder="0123456789"
+             value=""                
+          />
+          Tôi đồng ý với <a href="#">Điều khoản sử dụng</a>
+       </div>
+       <span class="message-error"></span>
+    </div>
+    <button type="submit" class="form-submit">Submit</button>
+ </form>
+    `
+    runCheckRegister()
+});
 
-openrgt2.addEventListener('click', () => openModal(modalRegister));
-openrgt.addEventListener('click', () => openModal(modalRegister));
-modalrgt.addEventListener('click', () => closeModal(modalRegister))
-
-
-openlg.addEventListener('click', () => openModal(modalLogin))
-modallgcl.addEventListener('click', () => closeModal(modalLogin))
-
+btnOpenLogin.addEventListener('click', () => {
+    openModal(modal)
+    $('.modal-form').innerHTML = `
+            <div class="form-header">
+                <a href =""><i class="fas fa-times"></i></a>
+                <h2>Đăng Nhập</h2>
+            </div>
+            <div class="warning">
+            </div>
+            <form class="form-content form-login">
+               <div class="form-group">
+                  <label class="form-label">Tài khoản email</label>
+                  <input
+                     class="form-input login-input"
+                     type="email"
+                     name="email"
+                     placeholder="example@gmail.com"
+                     value=""
+                  />
+                  <span class="message-error"></span>
+               </div>
+               <div class="form-group">
+                  <label class="form-label">Mật khẩu</label>
+                  <input
+                     class="form-input login-input"
+                     type="password"
+                     name="password"
+                     placeholder="Nhập mật khẩu"
+                     value=""
+                  />
+                  <span class="message-error"></span>
+               </div>
+               <button type="submit" class="btn-submit form-submit">Submit</button>
+               <p>Bạn chưa có tài khoản? <a href="./register.html">Đăng ký</a></p>
+            </form>
+    `
+    runCheckLogin()
+});
 
 
 function list(obj) {
@@ -59,13 +170,11 @@ let listcontents = ["Quần áo nữ", "Quần áo nam", "Giày nam", "Trang s�
 let listcnt = $('.nav-content-list')
 let s = ''
 for (let i = 0; i < listcontents.length; i++) {
-    s += '<li><a href="#" id="p' + i + '" onclick="list(this)">' + listcontents[i] + '</a></li>'
+    s += `<li><a href="#" id="p${i}" onclick="list(this)">${listcontents[i]}</a></li>`
 }
 listcnt.innerHTML = s;
 
-
-
-function viewtopsale(inp) {
+function viewTopSale(inp) {
     switch (inp) {
         case 'ngay':
             listtopsale.innerHTML = '<ul class="product-list"><li class="products" ><img src="./img/aonu1.PNG" alt="product"><div class="products-content"><p class="price">3.900.000 đ</p><p class="description">áo nữ sexy </p><button class="buy">Mua ngay</button></div></li> <li class="products" ><img src="./img/aonu1.PNG" alt="product"><div class="products-content"><p class="price">3.900.000 đ</p><p class="description">áo nữ sexy </p><button class="buy">Mua ngay</button></div></li></ul> '
@@ -82,5 +191,167 @@ function viewtopsale(inp) {
     }
 }
 
+//Register form
+function runCheckRegister() {
+    Validator({
+        form: '.form-register',
+        formGroupSelector: '.form-group',
+        errorSelector: '.message-error',
+        rules: [
+            Validator.isRequired(
+                'input[name="email"]',
+                "Vui lòng nhập email"
+            ),
+            Validator.isEmail('input[name="email"]'),
+            Validator.isRequired(
+                'input[name="password"]',
+                "Vui lòng nhập mật khẩu"
+            ),
+            Validator.minLength('input[name="password"]', 6),
+            Validator.isRequired(
+                'input[name="comfirmpass"]',
+                'Vui lòng nhập mật khẩu'
+            ),
+            Validator.isDuplicated(
+                'input[name="comfirmpass"]',
+                () => {
+                    return document.querySelector('input[name="password"]')
+                        .value;
+                },
+                "Mật khẩu không trùng khớp"
+            ),
+            Validator.isRequired(
+                'input[name="phone"]',
+                "Vui lòng nhập số điện thoại"
+            ),
+            Validator.isCorrectPhone('input[name="phone"]'),
+            Validator.isRequired(
+                'input[name="checkbox"]',
+                'Bạn chưa đồng ý điều khoản sử dụng'
+            ),
+        ],
+        onSubmit: function (data) {
+            checkRegister(data);
+        },
+    })
 
+    function checkRegister(data) {
+        let isFound = false;
+        for (let user of users) {
+            if (data.email === user.email) {
+                isFound = true;
+                break;
+            }
+        }
+        if (isFound) {
+            $('.warning').innerHTML = `<div class="block-warning">
+                 <i class="fas fa-exclamation-circle"></i> Email này đã đươc đăng ký
+              </div>`
+        }
+        else {
+            updateUsers(data)
+            window.location = "./index.html"
+        }
+    }
 
+    function updateUsers(data) {
+        users.push({
+            email: data.email,
+            password: data.password,
+            phone: data.phone,
+            typeUser: "member"
+        });
+        loginUser = users[users.length - 1];
+        updateLocalStorage();
+    }
+}
+
+//Login form
+function runCheckLogin() {
+    Validator({
+        form: '.form-login',
+        formGroupSelector: '.form-group',
+        errorSelector: '.message-error',
+        rules: [
+            Validator.isRequired(
+                'input[name="email"]',
+                "Vui lòng nhập email"
+            ),
+            Validator.isEmail('input[name="email"]'),
+            Validator.isRequired(
+                'input[name="password"]',
+                "Vui lòng nhập mật khẩu"
+            ),
+            Validator.minLength('input[name="password"]', 6),
+        ],
+        onSubmit: function (data) {
+            checkLogin(data)
+        }
+    });
+
+    function checkLogin(data) {
+        let isFound = false;
+        for (let user of users) {
+            if (data.email === user.email) {
+                if (data.password == user.password) {
+                    isFound = true;
+                    checkUserType(user)
+                    break;
+                }
+            }
+        }
+        if (!isFound) {
+            $('.warning').innerHTML = `<div class="block-warning">
+                 <i class="fas fa-exclamation-circle"></i> Tài khoản hoặc mật khẩu của bạn đã sai
+              </div>`
+            resetInput()
+        }
+    }
+
+    function resetInput() {
+        let inputs = $$('input')
+        for (let input of inputs) {
+            input.value = '';
+        }
+    }
+
+    function checkUserType(user) {
+        if (user.typeUser === 'admin')
+            window.location = "./admin.html"
+        else {
+            loginUser = user;
+            updateLocalStorage()
+            window.location = "./index.html"
+        }
+    }
+}
+
+function updateLocalStorage() {
+    let usersData = JSON.stringify(users);
+    let loginUserData = JSON.stringify(loginUser);
+
+    localStorage.setItem('myUsers', usersData);
+    localStorage.setItem('loginUser', loginUserData)
+}
+
+runCheckRegister();
+runCheckLogin
+
+//render
+function render() {
+    let myLogo = $('.nav .login-register');
+    if (loginUser) {
+        myLogo.innerHTML = `<div class="user-login">
+          <p>Xin chào ${loginUser.email}</p>
+          <a href="./index.html" id="logout" onclick="logout()">Đăng xuất</a>
+       </div>`
+    }
+}
+
+function logout() {
+    loginUser = null;
+    updateLocalStorage();
+    render();
+ }
+
+render()
