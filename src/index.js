@@ -18,49 +18,49 @@ if (!localStorage.getItem('products'))
     products = [
         {
             name: 'Giày thể thao GG08',
-            type: 'Giày',
+            type: 'Giay',
             price: 3900000,
             quantity: 200,
             img: './img/giaynam.PNG',
         },
         {
             name: 'Giày thể thao GG08',
-            type: 'Giày',
+            type: 'Giay',
             price: 3900000,
             quantity: 200,
             img: './img/giaynam2.PNG',
         },
         {
             name: 'Giày thể thao GG08',
-            type: 'Giày',
+            type: 'Giay',
             price: 3900000,
             quantity: 200,
             img: './img/giaynam3.PNG',
         },
         {
             name: 'Áo nam năng động cá tính',
-            type: 'Quần áo nam',
+            type: 'maleCloth',
             price: 3900000,
             quantity: 200,
             img: './img/aonam1.PNG',
         },
         {
             name: 'Áo nam năng động cá tính',
-            type: 'Quần áo nam',
+            type: 'maleCloth',
             price: 3900000,
             quantity: 200,
             img: './img/aonam2.PNG',
         },
         {
             name: 'Áo nam năng động cá tính',
-            type: 'Quần áo nam',
+            type: 'maleCloth',
             price: 3900000,
             quantity: 200,
             img: './img/aonam3.PNG',
         },
         {
             name: 'Áo nữ',
-            type: 'Quần áo nữ',
+            type: 'femaleCloth',
             price: 3900000,
             quantity: 200,
             img: './img/aonu1.PNG',
@@ -77,8 +77,7 @@ const btnOpenLogin = $('.js-login')
 const topsale = $('.top-sale select')
 const listtopsale = $('.top-sale .product-list')
 
-
-const listpro = $$('.nav-content-list li a')
+const navItems = $$('.nav-content-list li a')
 const product = $('.product .product-list')
 
 // Modal
@@ -233,15 +232,6 @@ function list(obj) {
 
 }
 
-let listcontents = ["Quần áo nữ", "Quần áo nam", "Giày nam", "Trang sức"];
-
-let listcnt = $('.nav-content-list')
-let s = ''
-for (let i = 0; i < listcontents.length; i++) {
-    s += `<li><a href="#" id="p${i}" onclick="list(this)">${listcontents[i]}</a></li>`
-}
-listcnt.innerHTML = s;
-
 function viewTopSale(inp) {
     switch (inp) {
         case 'ngay':
@@ -257,6 +247,20 @@ function viewTopSale(inp) {
         default:
             break;
     }
+}
+
+let productsHtml;
+
+//Lọc product
+for (let item of navItems) {
+    item.addEventListener('click', () => {
+        productsHtml = [];
+        for (let product of products) {
+            if (item.getAttribute('typeproduct') == product.type)
+                productsHtml.push(product);
+        }
+        render();
+    });
 }
 
 //========Validate=========
@@ -427,6 +431,7 @@ function enableSubmit() {
 //render
 function render() {
     let myLogo = $('.nav .login-register');
+
     if (loginUser) {
         myLogo.innerHTML = `<div class="user-login">
           <p>Xin chào ${loginUser.email}</p>
@@ -434,18 +439,25 @@ function render() {
        </div>`
     }
 
-    let html = products.map(item => {
-        return `<li class="products">
-        <img src="${item.img}" alt="product" />
-        <div class="products-content">
-           <p class="price">${item.price} đ</p>
-           <p class="description">${item.name}</p>
-           <button class="buy">Mua ngay</button>
-        </div>
-     </li>`
-    })
+    function htmlProduct(productList) {
+        return productList.map(item =>
+            `<li class="products">
+               <img src="${item.img}" alt="product" />
+               <div class="products-content">
+                  <p class="price">${item.price} đ</p>
+                  <p class="description">${item.name}</p>
+                  <button class="buy">Mua ngay</button>
+               </div>
+            </li>`
+        ).join("")
+    }
 
-    $('.product-list').innerHTML = html.join("");
+    if (productsHtml) {
+        $('.product-list').innerHTML = htmlProduct(productsHtml);
+    }
+    else {
+        $('.product-list').innerHTML = htmlProduct(products);
+    }
 }
 
 function logout() {
