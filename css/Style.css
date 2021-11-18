@@ -377,6 +377,10 @@ a {
    cursor: pointer;
 }
 
+.modal-form .form-submit:hover{
+   background: #ffb70f;
+}
+
 .open {
    display: flex;
 }
