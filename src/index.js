@@ -7,7 +7,6 @@ let products = JSON.parse(localStorage.getItem('products'));
 let cart = JSON.parse(localStorage.getItem('cart'));
 let order = JSON.parse(localStorage.getItem('order'));
 
-let productsHtml = [...products];
 
 if (!localStorage.getItem('myUsers'))
     users = [{
@@ -75,6 +74,8 @@ if (!localStorage.getItem('cart'))
     cart = [];
 
 updateLocalStorage()
+
+let productsHtml = [...products];
 
 const modal = $('.modal')
 const btnOpenRegister = $('.js-register')
