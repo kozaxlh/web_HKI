@@ -253,6 +253,17 @@ for (let item of navItems) {
     });
 }
 
+$('.search a').addEventListener('click', () => {
+    let searchValue = $('.search-ip').value.toLowerCase();
+    productsHtml = [];
+    for (let product of products) {
+        if (product.name.toLowerCase().includes(searchValue))
+            productsHtml.push(product);
+    }
+    render();
+})
+
+
 //========Validate=========
 //Register form
 function runCheckRegister() {
@@ -464,7 +475,7 @@ function addProductToCart() {
 for (let [index, btn] of buyBtns.entries()) {
     btn.addEventListener('click', () => {
         if (loginUser) {
-            cart.push(products[index]);
+            cart.push(createCartProduct(products[index]));
             addProductToCart();
         }
         else {
@@ -474,4 +485,11 @@ for (let [index, btn] of buyBtns.entries()) {
             runCheckLogin();
         }   
     })
+
+    function createCartProduct(product) {
+        let cartProduct = product;
+        cartProduct.count = 1;
+        delete cartProduct.quantity;
+        return cartProduct;
+    }
 }
