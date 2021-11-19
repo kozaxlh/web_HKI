@@ -7,7 +7,7 @@ let products = JSON.parse(localStorage.getItem('products'));
 let cart = JSON.parse(localStorage.getItem('cart'));
 let order = JSON.parse(localStorage.getItem('order'));
 
-let productsHtml;
+let productsHtml = [...products];
 
 if (!localStorage.getItem('myUsers'))
     users = [{
@@ -260,6 +260,7 @@ $('.search a').addEventListener('click', () => {
         if (product.name.toLowerCase().includes(searchValue))
             productsHtml.push(product);
     }
+    $('.search-ip').value = '';
     render();
 })
 
@@ -447,18 +448,14 @@ function render() {
                <div class="products-content">
                   <p class="price">${item.price}đ</p>
                   <p class="description">${item.name}</p>
-                  <button class="buy js-buy">Mua ngay</button>
+                  <button class=    "buy js-buy">Mua ngay</button>
                </div>
             </li>`
         ).join("")
     }
 
-    if (productsHtml) {
-        $('.product-list').innerHTML = htmlProduct(productsHtml);
-    }
-    else {
-        $('.product-list').innerHTML = htmlProduct(products);
-    }
+     $('.product-list').innerHTML = htmlProduct(productsHtml);
+
 }
 
 function logout() {
