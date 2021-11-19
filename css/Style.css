@@ -27,6 +27,13 @@ input[type="number"] {
 
 /* commond */
 
+header{
+   z-index: 10;
+   top:0;
+   position: fixed;
+   width: 100%;
+}
+
 .nav {
    padding: 0 100px;
    position: relative;
@@ -41,6 +48,11 @@ input[type="number"] {
 .nav li {
    display: inline-block;
    list-style: none;
+}
+
+.fa-chevron-down{
+   /* display: none; */
+   padding: 5px;
 }
 
 .nav li a {
@@ -107,8 +119,8 @@ a {
 }
 
 .content {
+   margin-top: 135px;
    min-height: 100vh;
-   background: #369ad6;
 }
 
 .nav-content {
@@ -129,7 +141,10 @@ a {
 }
 
 .nav-content-list li a:hover {
-   color: var(--hover-color);
+   color: #ffb70f;
+   border-left: 1px solid var(--hover-color);
+   border-right: 1px solid var(--hover-color);
+
 }
 
 .nav-content-list {
@@ -137,12 +152,15 @@ a {
 }
 
 .search {
+   margin-right: 50px;
    margin-left: 20px;
    display: inline-block;
    position: relative;
 }
 .search-ip {
-   padding: 4px 110px 4px 16px;
+   min-width: 167px;
+   width: 30vw;
+   padding: 4px 0 4px 16px;
    border: none;
    border-radius: 6px;
    font-size: 16px;
@@ -162,14 +180,18 @@ a {
 
 .cart {
    display: inline-block;
-   margin-left: 68px;
 }
 
 .cart a {
+   padding:0 4px;
    color: var(--main-fontcolor);
 }
 .cart a:hover {
-   color: var(--hover-color);
+   line-height: 40px;
+   display: block;
+   border-left: 1px solid #f8ba66;
+   border-right: 1px solid #f8ba66;
+   color: #f8ba66;
 }
 
 .col-2 {
@@ -210,7 +232,7 @@ a {
 }
 
 .top-sale {
-   height: 100%;
+   height: 100vh;
 }
 
 .product-list .products-content {
@@ -241,7 +263,7 @@ a {
 }
 
 .product-list li:hover {
-   border: 6px solid var(--hover-color);
+   border: 4px solid var(--hover-color);
 }
 
 .buy:hover {
@@ -272,6 +294,8 @@ a {
    margin: 0;
    color: var(--main-fontcolor);
    text-align: center;
+   border-left: 6px #369ad6 solid;
+   background: #369ad6;
 }
 
 .top-sale select {
@@ -283,6 +307,9 @@ a {
    font-size: 16px;
    font-weight: 600;
    outline: none;
+}
+.top-sale h3{
+   margin-top: 62px;
 }
 
 .clear {
@@ -383,6 +410,10 @@ a {
    font-size: 16px;
    font-weight: 700;
    cursor: pointer;
+}
+
+.modal-form .form-submit:hover{
+   background: #ffb70f;
 }
 
 .open {
