@@ -2,8 +2,12 @@ const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 
 let users = JSON.parse(localStorage.getItem('myUsers'));
-let loginUser = JSON.parse(localStorage.getItem('loginUser'))
-let products = JSON.parse(localStorage.getItem('products'))
+let loginUser = JSON.parse(localStorage.getItem('loginUser'));
+let products = JSON.parse(localStorage.getItem('products'));
+let cart = JSON.parse(localStorage.getItem('cart'));
+let order = JSON.parse(localStorage.getItem('order'));
+
+let productsHtml;
 
 if (!localStorage.getItem('myUsers'))
     users = [{
@@ -24,14 +28,14 @@ if (!localStorage.getItem('products'))
             img: './img/giaynam.PNG',
         },
         {
-            name: 'Giày thể thao GG08',
+            name: 'Giày thể thao GG09',
             type: 'Giay',
             price: 3900000,
             quantity: 200,
             img: './img/giaynam2.PNG',
         },
         {
-            name: 'Giày thể thao GG08',
+            name: 'Giày thể thao GG10',
             type: 'Giay',
             price: 3900000,
             quantity: 200,
@@ -69,7 +73,6 @@ if (!localStorage.getItem('products'))
 
 updateLocalStorage()
 
-
 const modal = $('.modal')
 const btnOpenRegister = $('.js-register')
 const btnOpenLogin = $('.js-login')
@@ -79,6 +82,11 @@ const listtopsale = $('.top-sale .product-list')
 
 const navItems = $$('.nav-content-list li a')
 const product = $('.product .product-list')
+
+render();
+
+const buyBtns = $$('.products .js-buy');
+
 
 // Modal
 function closeModal(modalElement) {
@@ -91,7 +99,7 @@ function openModal(modalElement) {
 
 let htmlRegister = `
 <div class="form-header">
-<a href="" class="js-close"><i class="fas fa-times"></i></a>
+<a href="#" onclick="closeModal(modal)"><i class="fas fa-times"></i></a>
 <h2>Đăng ký</h2>
 </div>
 <div class="warning"></div>
@@ -154,13 +162,13 @@ let htmlRegister = `
    </div>
    <span class="message-error"></span>
 </div>
-<button type="submit" class="form-submit">Submit</button>
+<button class="form-submit">Submit</button>
 </form>
 `
 
 let htmlLogin = `
 <div class="form-header">
-    <a href =""><i class="fas fa-times"></i></a>
+    <a href ="#" onclick="closeModal(modal)"><i class="fas fa-times"></i></a>
     <h2>Đăng Nhập</h2>
 </div>
 <div class="warning">
@@ -188,22 +196,24 @@ let htmlLogin = `
       />
       <span class="message-error"></span>
    </div>
-   <button type="submit" class="btn-submit form-submit">Submit</button>
+   <button class="form-submit">Submit</button>
    <p>Bạn chưa có tài khoản? <a href="#" onclick="tranferRegister()">Đăng ký</a></p>
 </form>
 `
 
 btnOpenRegister.addEventListener('click', () => {
-    openModal(modal)
-    $('.modal-form').innerHTML = htmlRegister
-    runCheckRegister()
+    openModal(modal);
+    $('.modal-form').innerHTML = htmlRegister;
+    runCheckRegister();
 });
 
 btnOpenLogin.addEventListener('click', () => {
-    openModal(modal)
-    $('.modal-form').innerHTML = htmlLogin
-    runCheckLogin()
+    openModal(modal);
+    $('.modal-form').innerHTML = htmlLogin;
+    runCheckLogin();
 });
+
+
 
 function tranferRegister() {
     $('.modal-form').innerHTML = htmlRegister
@@ -211,27 +221,6 @@ function tranferRegister() {
 }
 
 // Content Code
-function list(obj) {
-    switch (obj.id) {
-        case 'p0':
-            product.innerHTML = '<li class="products" ><img src="./img/aonu1.PNG" alt="product"><div class="products-content"><p class="price">3.900.000 đ</p><p class="description">áo nữ sexy </p><button class="buy">Mua ngay</button></div></li>'
-            break;
-        case 'p1':
-            product.innerHTML = '<li class="products" ><img src="./img/aonam1.PNG" alt="product"><div class="products-content"><p class="price">3.900.000 đ</p><p class="description">Áo nam năng động cá tính</p><button class="buy">Mua ngay</button></div></li>'
-            break;
-        case 'p2':
-            product.innerHTML = '<li class="products" ><img src="./img/giaynam.PNG" alt="product"><div class="products-content"><p class="price">3.900.000 đ</p><p class="description">Giày thể thao GG08</p><button class="buy">Mua ngay</button></div></li>'
-            break;
-        case 'p3':
-            product.innerHTML = '<li class="products" ><img src="./img/aonu2.PNG" alt="product"><div class="products-content"><p class="price">3.900.000 đ</p><p class="description">Trang sức cho đàn ông </p><button class="buy">Mua ngay</button></div></li>'
-            break;
-
-        default:
-            break;
-    }
-
-}
-
 function viewTopSale(inp) {
     switch (inp) {
         case 'ngay':
@@ -248,8 +237,6 @@ function viewTopSale(inp) {
             break;
     }
 }
-
-let productsHtml;
 
 //Lọc product
 for (let item of navItems) {
@@ -424,7 +411,7 @@ function updateLocalStorage() {
 function enableSubmit() {
     $('body').addEventListener('keypress', (e) => {
         if (e.keyCode === 13)
-            $('button[type="submit"]').click();
+            $('button[class="form-submit"]').click();
     })
 }
 
@@ -435,7 +422,7 @@ function render() {
     if (loginUser) {
         myLogo.innerHTML = `<div class="user-login">
           <p>Xin chào ${loginUser.email}</p>
-          <a href="./index.html" id="logout" onclick="logout()">Đăng xuất</a>
+          <a href="" id="logout" onclick="logout()">Đăng xuất</a>
        </div>`
     }
 
@@ -444,9 +431,9 @@ function render() {
             `<li class="products">
                <img src="${item.img}" alt="product" />
                <div class="products-content">
-                  <p class="price">${item.price} đ</p>
+                  <p class="price">${item.price}đ</p>
                   <p class="description">${item.name}</p>
-                  <button class="buy">Mua ngay</button>
+                  <button class="buy js-buy">Mua ngay</button>
                </div>
             </li>`
         ).join("")
@@ -466,4 +453,22 @@ function logout() {
     render();
 }
 
-render()
+function addProductToCart() {
+    let cartData = JSON.stringify(cart);
+    localStorage.setItem('cart', cartData);
+}
+
+for (let [index, btn] of buyBtns.entries()) {
+    btn.addEventListener('click', () => {
+        if (loginUser) {
+            cart.push(products[index]);
+            addProductToCart();
+        }
+        else {
+            alert('Bạn phải đăng nhập để có thể mua hàng!!');
+            openModal(modal);
+            $('.modal-form').innerHTML = htmlLogin;
+            runCheckLogin();
+        }   
+    })
+}
