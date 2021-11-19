@@ -71,6 +71,9 @@ if (!localStorage.getItem('products'))
         },
     ]
 
+if (!localStorage.getItem('cart'))
+    cart = [];
+
 updateLocalStorage()
 
 const modal = $('.modal')
