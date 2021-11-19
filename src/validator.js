@@ -1,15 +1,15 @@
 // Form HTML for validator
 /* <div class="form-group">
-         <label class="form-label">Email *</label>
-         <input
-            class="form-input"
-            type="email"
-            name="email"
-            placeholder="Example@email.com"
-            value=""                
-         />
-         <span class="message-error"></span>
-      </div> */
+      <label class="form-label">Email *</label>
+      <input
+         class="form-input"
+         type="email"
+         name="email"
+         placeholder="Example@email.com"
+         value=""                
+      />
+      <span class="message-error"></span>
+   </div> */
 // Form validator js
 /*
    Validator({

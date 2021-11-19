@@ -2,8 +2,12 @@ const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 
 let users = JSON.parse(localStorage.getItem('myUsers'));
-let loginUser = JSON.parse(localStorage.getItem('loginUser'))
-let products = JSON.parse(localStorage.getItem('products'))
+let loginUser = JSON.parse(localStorage.getItem('loginUser'));
+let products = JSON.parse(localStorage.getItem('products'));
+let cart = JSON.parse(localStorage.getItem('cart'));
+let order = JSON.parse(localStorage.getItem('order'));
+
+let productsHtml;
 
 if (!localStorage.getItem('myUsers'))
     users = [{
@@ -18,57 +22,59 @@ if (!localStorage.getItem('products'))
     products = [
         {
             name: 'Giày thể thao GG08',
-            type: 'Giày',
+            type: 'Giay',
             price: 3900000,
             quantity: 200,
             img: './img/giaynam.PNG',
         },
         {
-            name: 'Giày thể thao GG08',
-            type: 'Giày',
+            name: 'Giày thể thao GG09',
+            type: 'Giay',
             price: 3900000,
             quantity: 200,
             img: './img/giaynam2.PNG',
         },
         {
-            name: 'Giày thể thao GG08',
-            type: 'Giày',
+            name: 'Giày thể thao GG10',
+            type: 'Giay',
             price: 3900000,
             quantity: 200,
             img: './img/giaynam3.PNG',
         },
         {
             name: 'Áo nam năng động cá tính',
-            type: 'Quần áo nam',
+            type: 'maleCloth',
             price: 3900000,
             quantity: 200,
             img: './img/aonam1.PNG',
         },
         {
             name: 'Áo nam năng động cá tính',
-            type: 'Quần áo nam',
+            type: 'maleCloth',
             price: 3900000,
             quantity: 200,
             img: './img/aonam2.PNG',
         },
         {
             name: 'Áo nam năng động cá tính',
-            type: 'Quần áo nam',
+            type: 'maleCloth',
             price: 3900000,
             quantity: 200,
             img: './img/aonam3.PNG',
         },
         {
             name: 'Áo nữ',
-            type: 'Quần áo nữ',
+            type: 'femaleCloth',
             price: 3900000,
             quantity: 200,
             img: './img/aonu1.PNG',
         },
     ]
 
-updateLocalStorage()
+if (!localStorage.getItem('cart'))
+    cart = [];
 
+updateLocalStorage()
 
 const modal = $('.modal')
 const btnOpenRegister = $('.js-register')
@@ -77,9 +83,13 @@ const btnOpenLogin = $('.js-login')
 const topsale = $('.top-sale select')
 const listtopsale = $('.top-sale .product-list')
 
-
-const listpro = $$('.nav-content-list li a')
+const navItems = $$('.nav-content-list li a')
 const product = $('.product .product-list')
+
+render();
+
+const buyBtns = $$('.products .js-buy');
+
 
 // Modal
 function closeModal(modalElement) {
@@ -92,7 +102,7 @@ function openModal(modalElement) {
 
 let htmlRegister = `
 <div class="form-header">
-<a href="" class="js-close"><i class="fas fa-times"></i></a>
+<a href="#" onclick="closeModal(modal)"><i class="fas fa-times"></i></a>
 <h2>Đăng ký</h2>
 </div>
 <div class="warning"></div>
@@ -155,13 +165,13 @@ let htmlRegister = `
    </div>
    <span class="message-error"></span>
 </div>
-<button type="submit" class="form-submit">Submit</button>
+<button class="form-submit">Submit</button>
 </form>
 `
 
 let htmlLogin = `
 <div class="form-header">
-    <a href =""><i class="fas fa-times"></i></a>
+    <a href ="#" onclick="closeModal(modal)"><i class="fas fa-times"></i></a>
     <h2>Đăng Nhập</h2>
 </div>
 <div class="warning">
@@ -189,22 +199,24 @@ let htmlLogin = `
       />
       <span class="message-error"></span>
    </div>
-   <button type="submit" class="btn-submit form-submit">Submit</button>
+   <button class="form-submit">Submit</button>
    <p>Bạn chưa có tài khoản? <a href="#" onclick="tranferRegister()">Đăng ký</a></p>
 </form>
 `
 
 btnOpenRegister.addEventListener('click', () => {
-    openModal(modal)
-    $('.modal-form').innerHTML = htmlRegister
-    runCheckRegister()
+    openModal(modal);
+    $('.modal-form').innerHTML = htmlRegister;
+    runCheckRegister();
 });
 
 btnOpenLogin.addEventListener('click', () => {
-    openModal(modal)
-    $('.modal-form').innerHTML = htmlLogin
-    runCheckLogin()
+    openModal(modal);
+    $('.modal-form').innerHTML = htmlLogin;
+    runCheckLogin();
 });
+
+
 
 function tranferRegister() {
     $('.modal-form').innerHTML = htmlRegister
@@ -212,36 +224,6 @@ function tranferRegister() {
 }
 
 // Content Code
-function list(obj) {
-    switch (obj.id) {
-        case 'p0':
-            product.innerHTML = '<li class="products" ><img src="./img/aonu1.PNG" alt="product"><div class="products-content"><p class="price">3.900.000 đ</p><p class="description">áo nữ sexy </p><button class="buy">Mua ngay</button></div></li>'
-            break;
-        case 'p1':
-            product.innerHTML = '<li class="products" ><img src="./img/aonam1.PNG" alt="product"><div class="products-content"><p class="price">3.900.000 đ</p><p class="description">Áo nam năng động cá tính</p><button class="buy">Mua ngay</button></div></li>'
-            break;
-        case 'p2':
-            product.innerHTML = '<li class="products" ><img src="./img/giaynam.PNG" alt="product"><div class="products-content"><p class="price">3.900.000 đ</p><p class="description">Giày thể thao GG08</p><button class="buy">Mua ngay</button></div></li>'
-            break;
-        case 'p3':
-            product.innerHTML = '<li class="products" ><img src="./img/aonu2.PNG" alt="product"><div class="products-content"><p class="price">3.900.000 đ</p><p class="description">Trang sức cho đàn ông </p><button class="buy">Mua ngay</button></div></li>'
-            break;
-
-        default:
-            break;
-    }
-
-}
-
-let listcontents = ["Quần áo nữ", "Quần áo nam", "Giày nam", "Trang sức"];
-
-let listcnt = $('.nav-content-list')
-let s = ''
-for (let i = 0; i < listcontents.length; i++) {
-    s += `<li><a href="#" id="p${i}" onclick="list(this)">${listcontents[i]}</a></li>`
-}
-listcnt.innerHTML = s;
-
 function viewTopSale(inp) {
     switch (inp) {
         case 'ngay':
@@ -257,6 +239,18 @@ function viewTopSale(inp) {
         default:
             break;
     }
+}
+
+//Lọc product
+for (let item of navItems) {
+    item.addEventListener('click', () => {
+        productsHtml = [];
+        for (let product of products) {
+            if (item.getAttribute('typeproduct') == product.type)
+                productsHtml.push(product);
+        }
+        render();
+    });
 }
 
 //========Validate=========
@@ -420,32 +414,40 @@ function updateLocalStorage() {
 function enableSubmit() {
     $('body').addEventListener('keypress', (e) => {
         if (e.keyCode === 13)
-            $('button[type="submit"]').click();
+            $('button[class="form-submit"]').click();
     })
 }
 
 //render
 function render() {
     let myLogo = $('.nav .login-register');
+
     if (loginUser) {
         myLogo.innerHTML = `<div class="user-login">
           <p>Xin chào ${loginUser.email}</p>
-          <a href="./index.html" id="logout" onclick="logout()">Đăng xuất</a>
+          <a href="" id="logout" onclick="logout()">Đăng xuất</a>
        </div>`
     }
 
-    let html = products.map(item => {
-        return `<li class="products">
-        <img src="${item.img}" alt="product" />
-        <div class="products-content">
-           <p class="price">${item.price} đ</p>
-           <p class="description">${item.name}</p>
-           <button class="buy">Mua ngay</button>
-        </div>
-     </li>`
-    })
+    function htmlProduct(productList) {
+        return productList.map(item =>
+            `<li class="products">
+               <img src="${item.img}" alt="product" />
+               <div class="products-content">
+                  <p class="price">${item.price}đ</p>
+                  <p class="description">${item.name}</p>
+                  <button class="buy js-buy">Mua ngay</button>
+               </div>
+            </li>`
+        ).join("")
+    }
 
-    $('.product-list').innerHTML = html.join("");
+    if (productsHtml) {
+        $('.product-list').innerHTML = htmlProduct(productsHtml);
+    }
+    else {
+        $('.product-list').innerHTML = htmlProduct(products);
+    }
 }
 
 function logout() {
@@ -454,4 +456,22 @@ function logout() {
     render();
 }
 
-render()
+function addProductToCart() {
+    let cartData = JSON.stringify(cart);
+    localStorage.setItem('cart', cartData);
+}
+
+for (let [index, btn] of buyBtns.entries()) {
+    btn.addEventListener('click', () => {
+        if (loginUser) {
+            cart.push(products[index]);
+            addProductToCart();
+        }
+        else {
+            alert('Bạn phải đăng nhập để có thể mua hàng!!');
+            openModal(modal);
+            $('.modal-form').innerHTML = htmlLogin;
+            runCheckLogin();
+        }   
+    })
+}

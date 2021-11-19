@@ -43,11 +43,10 @@
       <div class="content">
          <div class="nav-content">
             <ul class="nav-content-list">
-               <li><a href="#" id="p1" onclick="list(this)">Quần áo nữ</a></li>
-               <li><a href="#" id="p2" onclick="list(this)">Quần áo nam</a></li>
-               <li><a href="#" id="p3" onclick="list(this)">Giày nam</a></li>
-               <li><a href="#" id="p4" onclick="list(this)">Trang sức</a></li>
-               <div class="list-content"></div>
+               <li><a href="#" typeproduct="femaleCloth">Quần áo nữ</a></li>
+               <li><a href="#" typeproduct="maleCloth">Quần áo nam</a></li>
+               <li><a href="#" typeproduct="Giay">Giày nam</a></li>
+               <li><a href="#" typeproduct="Trang suc">Trang sức</a></li>
             </ul>
             <div class="search">
                <input
@@ -70,9 +69,7 @@
                <li class="product-pages-number"><a href="">2</a></li>
                <li class="product-pages-number"><a href="">3</a></li>
             </ul>
-            <ul class="product-list">
-
-            </ul>
+            <ul class="product-list"></ul>
          </div>
 
          <div class="col-2">
@@ -113,3 +110,58 @@
       <script src="./src/index.js"></script>
    </body>
 </html>
+
+<!-- 
+   <div class="form-header">
+         <a href="#" onclick="closeModal(modal)"
+            ><i class="fas fa-times"></i
+         ></a>
+         <h2>Giỏ hàng</h2>
+      </div>
+      <div class="warning"></div>
+      <div class="cart-content">
+         <div class="cart-product-list">
+            <div class="cart-product">
+               <div class="product-name">Giày thể thao GG08</div>
+               <img src="./img/aonam1.PNG"class="product-img"></img>
+               <div class="product-btn">
+                  <input type="number"class="product-quantity" value="1" min="1">
+                  <button class="product-delete-btn">Xóa</button>
+               </div>
+               <div class="product-price">390000đ</div>
+            </div>
+         </div>
+         <div class="total-price">Tổng tiền: 10000000đ</div>
+         <button class="cart-submit form-submit">Đặt hàng</button>   
+   </div> 
+
+CSS: 
+   .cart-content {
+   display: flex;
+   padding: 8px;
+   flex-direction: column;
+   }
+
+   .cart-product {
+      height: 60px;
+      padding: 8px 0;
+      display: flex;
+      justify-content: space-around;
+   }
+
+   .cart-product .product-img,
+   .cart-product .product-quantity {
+      width: 60px;
+   }
+
+   .total-price {
+      align-self: flex-end;
+      padding: 8px 40px;
+   }
+
+   .product-btn .product-quantity::-webkit-outer-spin-button,
+   .product-btn .product-quantity::-webkit-inner-spin-button {
+      -webkit-appearance: auto;
+      margin: 0;
+   }
+-->
