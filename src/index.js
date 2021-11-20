@@ -493,3 +493,17 @@ for (let [index, btn] of buyBtns.entries()) {
         return cartProduct;
     }
 }
+
+var nav = $('.nav')
+var navlist = $('.fa-chevron-down')
+
+navlist.onclick = function name(params) {
+    var isclose = nav.clientHeight === 48;
+    if (isclose) {
+        nav.style.height = 'auto'
+    }
+    else {
+        nav.style.height = null
+    }
+}
+

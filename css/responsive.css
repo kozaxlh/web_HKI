@@ -14,9 +14,6 @@
 }
 
 @media (max-width: 856px){
-    .content{
-        margin-top: 198px;
-    }
 
 }
 
@@ -24,12 +21,21 @@
 
 @media (max-width: 769px) {
     .search {
-        padding: 5px;
+        padding: 6px;
         display: inline-block;
     }
     .nav li{
         display: block;
     }
+    .nav .fa-chevron-down{
+        display: inline-block;
+    }
+    .nav li:first-child{
+        display: inline-block;
+    }
+    .nav .fa-chevron-down{
+    display: inline-block;
+}
 
     
 }

@@ -39,6 +39,20 @@ header{
    position: relative;
    font-size: 24px;
    background: var(--main-background);
+   height: 48px;
+   overflow: hidden;
+}
+
+.nav .fa-chevron-down{
+   padding: 12px;
+   height: 100%;
+   display: inline-block;
+   color: #fff;
+   display: none;
+}
+.nav .fa-chevron-down:hover{
+   background: #fff;
+   color: #00a2e8;
 }
 
 .nav-list {
@@ -89,6 +103,7 @@ a {
 }
 
 .login-register a {
+   padding: 0 12px;
    display: inline-block;
    line-height: 48px;
    font-size: 18px;
@@ -96,11 +111,14 @@ a {
 }
 
 .login-register a:hover {
-   color: var(--hover-color);
+   color:#00a2e8;
+   background: #fff;
 }
 
 .sub-header {
-   padding: 8px 100px;
+   min-width: 784px;
+   overflow: hidden;
+   padding: 8px 0 8px 100px;
    font-size: 18px;
    background: #2769e4;
    color: var(--hover-color);
@@ -267,13 +285,12 @@ a {
 }
 
 .buy:hover {
-   border: 2px solid var(--hover-color);
    background: var(--hover-color);
    cursor: pointer;
 }
 .buy {
    margin-top: 12px;
-   padding: 2px 6px;
+   padding: 4px 8px;
    border: none;
    border-radius: 2px;
    background: #faa32c;
