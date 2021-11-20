@@ -243,6 +243,7 @@ function viewTopSale(inp) {
 }
 
 //Lọc product
+
 for (let item of navItems) {
     item.addEventListener('click', () => {
         productsHtml = [];
