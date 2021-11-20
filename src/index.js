@@ -450,7 +450,7 @@ function render() {
                <div class="products-content">
                   <p class="price">${item.price}đ</p>
                   <p class="description">${item.name}</p>
-                  <button class=    "buy js-buy">Mua ngay</button>
+                  <button class="buy js-buy">Mua ngay</button>
                </div>
             </li>`
         ).join("")
