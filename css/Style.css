@@ -519,6 +519,7 @@ a {
 }
 
 .cart-body .cart-list li{
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3) ;
    color: #fff;
    margin-top: 6px;
    border-radius: 6px;
@@ -608,9 +609,6 @@ a {
     position: absolute;
     bottom: 0;
     width: 100%;
-}
-
-.cart-footer .continue{
 }
 
 .cart-footer button{
