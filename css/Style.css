@@ -196,15 +196,15 @@ a {
    color: var(--hover-color);
 }
 
-.cart {
+.cart-icon {
    display: inline-block;
 }
 
-.cart a {
+.cart-icon a {
    padding:0 4px;
    color: var(--main-fontcolor);
 }
-.cart a:hover {
+.cart-icon a:hover {
    line-height: 40px;
    display: block;
    border-left: 1px solid #f8ba66;
@@ -333,7 +333,8 @@ a {
    clear: both;
 }
 
-.modal {
+.modal,
+.cart {
    position: fixed;
    top: 0;
    left: 0;
@@ -442,24 +443,12 @@ a {
    border: 1px solid #f10!important;
 }
 
-.cart{
-   position: fixed;
-   display: flex;
-   top:0;
-   bottom: 0;
-   left: 0;
-   right: 0;
-   z-index: 100;
-   background: rgba(0, 0, 0, 0.3);
-   align-items: center;
-   justify-content: center;
-}
-
 .modal-cart{
    position: relative;
    min-width: 80%;
    background: #fff;
-   min-height: 500px
+   min-height: 500px;
+   animation: scrollmodal ease 0.6s;
 }
 
 .cart-head{
