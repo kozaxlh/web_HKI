@@ -202,6 +202,7 @@ let htmlLogin = `
    </div>
    <button class="form-submit">Submit</button>
    <p>Bạn chưa có tài khoản? <a href="#" onclick="tranferRegister()">Đăng ký</a></p>
+   <a href="./login.html" onclick="">Trang Admin</a>
 </form>
 `
 
@@ -374,19 +375,20 @@ function runCheckLogin() {
             Validator.minLength('input[name="password"]', 6),
         ],
         onSubmit: function (data) {
-            checkLogin(data)
+            checkLogin(data);
+            closeModal(modal);
+            render();
         }
     });
 
     function checkLogin(data) {
         let isFound = false;
         for (let user of users) {
-            if (data.email === user.email) {
-                if (data.password == user.password) {
-                    isFound = true;
-                    checkUserType(user)
-                    break;
-                }
+            if (data.email === user.email && data.password === user.password && user.typeUser === 'member') {
+                isFound = true;
+                loginUser = user;
+                updateLocalStorage();
+                break;
             }
         }
         if (!isFound) {
@@ -401,16 +403,6 @@ function runCheckLogin() {
         let inputs = $$('input')
         for (let input of inputs) {
             input.value = '';
-        }
-    }
-
-    function checkUserType(user) {
-        if (user.typeUser === 'admin')
-            window.location = "./admin.html"
-        else {
-            loginUser = user;
-            updateLocalStorage()
-            window.location = "./index.html"
         }
     }
 
@@ -492,9 +484,3 @@ for (let [index, btn] of buyBtns.entries()) {
         return cartProduct;
     }
 }
-
-var nav = $('.nav')
-var navlist = $('.fa-chevron-down')
-
-
-
