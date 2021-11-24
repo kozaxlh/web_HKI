@@ -427,6 +427,18 @@ function enableSubmit() {
 //render
 function render() {
     let myLogo = $('.nav .login-register');
+    let productsInPage = 8;
+
+    function htmlNumberPage() {
+        let pages = Math.ceil(productsHtml.length / productsInPage);
+        let pagesHTML = [];
+
+        for (let i = 0; i < pages; i++) {
+            pagesHTML.push(`<li class="product-pages-number"><a href="#" index="${i}">${i + 1}</a></li>`)
+        }
+
+        return pagesHTML.join("");
+    }
 
     if (loginUser) {
         myLogo.innerHTML = `<div class="user-login">
@@ -448,9 +460,16 @@ function render() {
         ).join("")
     }
 
-     $('.product-list').innerHTML = htmlProduct(productsHtml);
-
+    // function a(productList, index = 0) {
+    //     let html = [];
+    //     for(let i = index; i < index + productsInPage)
+    // }
+    
+    $('.product-pages').innerHTML = htmlNumberPage();
+    $('.product-list').innerHTML = htmlProduct(productsHtml);
 }
+
+
 
 function logout() {
     loginUser = null;
@@ -474,7 +493,7 @@ for (let [index, btn] of buyBtns.entries()) {
             openModal(modal);
             $('.modal-form').innerHTML = htmlLogin;
             runCheckLogin();
-        }   
+        }
     })
 
     function createCartProduct(product) {
@@ -482,5 +501,20 @@ for (let [index, btn] of buyBtns.entries()) {
         cartProduct.count = 1;
         delete cartProduct.quantity;
         return cartProduct;
+    }
+}
+
+//responsive
+
+let nav = $('.nav')
+let navlist = $('.fa-chevron-down')
+
+navlist.onclick = function name(params) {
+    let isclose = nav.clientHeight === 48;
+    if (isclose) {
+        nav.style.height = 'auto'
+    }
+    else {
+        nav.style.height = null
     }
 }
