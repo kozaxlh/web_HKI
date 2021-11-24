@@ -122,13 +122,15 @@ a {
    font-size: 18px;
    background: #2769e4;
    color: var(--hover-color);
+   display: flex;
+   align-items: center;
 }
-
 .sub-header .slogan {
    padding-left: 10px;
 }
 
 .sub-header .sign {
+   padding-left: 12px;
    padding-right: 20px;
    border-right: 2px solid var(--hover-color);
    text-transform: uppercase;
