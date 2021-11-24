@@ -68,148 +68,6 @@ if (!localStorage.getItem('products'))
          quantity: 200,
          img: './img/aonu1.PNG',
       },
-      ////test
-      {
-         name: 'Áo nữ',
-         type: 'femaleCloth',
-         price: 3900000,
-         quantity: 200,
-         img: './img/aonu1.PNG',
-      },
-      {
-         name: 'Áo nữ',
-         type: 'femaleCloth',
-         price: 3900000,
-         quantity: 200,
-         img: './img/aonu1.PNG',
-      },
-      {
-         name: 'Áo nữ',
-         type: 'femaleCloth',
-         price: 3900000,
-         quantity: 200,
-         img: './img/aonu1.PNG',
-      },
-      {
-         name: 'Áo nữ',
-         type: 'femaleCloth',
-         price: 3900000,
-         quantity: 200,
-         img: './img/aonu1.PNG',
-      },
-      {
-         name: 'Áo nữ',
-         type: 'femaleCloth',
-         price: 3900000,
-         quantity: 200,
-         img: './img/aonu1.PNG',
-      },
-      {
-         name: 'Áo nữ',
-         type: 'femaleCloth',
-         price: 3900000,
-         quantity: 200,
-         img: './img/aonu1.PNG',
-      },
-      {
-         name: 'Áo nữ',
-         type: 'femaleCloth',
-         price: 3900000,
-         quantity: 200,
-         img: './img/aonu1.PNG',
-      },
-      {
-         name: 'Áo nữ',
-         type: 'femaleCloth',
-         price: 3900000,
-         quantity: 200,
-         img: './img/aonu1.PNG',
-      },
-      {
-         name: 'Áo nữ',
-         type: 'femaleCloth',
-         price: 3900000,
-         quantity: 200,
-         img: './img/aonu1.PNG',
-      },
-      {
-         name: 'Áo nữ',
-         type: 'femaleCloth',
-         price: 3900000,
-         quantity: 200,
-         img: './img/aonu1.PNG',
-      },
-      {
-         name: 'Áo nữ',
-         type: 'femaleCloth',
-         price: 3900000,
-         quantity: 200,
-         img: './img/aonu1.PNG',
-      },
-      {
-         name: 'Áo nữ',
-         type: 'femaleCloth',
-         price: 3900000,
-         quantity: 200,
-         img: './img/aonu1.PNG',
-      },
-      {
-         name: 'Áo nữ',
-         type: 'femaleCloth',
-         price: 3900000,
-         quantity: 200,
-         img: './img/aonu1.PNG',
-      },
-      {
-         name: 'Áo nữ',
-         type: 'femaleCloth',
-         price: 3900000,
-         quantity: 200,
-         img: './img/aonu1.PNG',
-      },
-      {
-         name: 'Áo nữ',
-         type: 'femaleCloth',
-         price: 3900000,
-         quantity: 200,
-         img: './img/aonu1.PNG',
-      },
-      {
-         name: 'Áo nữ',
-         type: 'femaleCloth',
-         price: 3900000,
-         quantity: 200,
-         img: './img/aonu1.PNG',
-      },
-      {
-         name: 'Áo nữ',
-         type: 'femaleCloth',
-         price: 3900000,
-         quantity: 200,
-         img: './img/aonu1.PNG',
-      },
-      {
-         name: 'Áo nữ',
-         type: 'femaleCloth',
-         price: 3900000,
-         quantity: 200,
-         img: './img/aonu1.PNG',
-      },
-      {
-         name: 'Áo nữ',
-         type: 'femaleCloth',
-         price: 3900000,
-         quantity: 200,
-         img: './img/aonu1.PNG',
-      },
-      {
-         name: 'Áo nữ',
-         type: 'femaleCloth',
-         price: 3900000,
-         quantity: 200,
-         img: './img/aonu1.PNG',
-      },
-      ///test
    ]
 
 if (!localStorage.getItem('cart'))
@@ -582,7 +440,6 @@ function render() {
             `<li class="product-pages-number" index="${i}"><a href="#">${i + 1}</a></li>`
          )
       }
-
       return pagesHTML.join("");
    }
 
@@ -595,6 +452,7 @@ function render() {
    let isInner = false;
 
    $('.product-pages').innerHTML = htmlNumberPage();
+
    if (!isInner) {
       $('.product-list').innerHTML = htmlProduct();
       isInner = true;
@@ -610,15 +468,15 @@ function render() {
 
 function htmlProduct(index = 0) {
    let html = [];
-   for (let i = index * 8; i < index * 8 + productsInPage && i < productsHtml.length; i++) {
+   for (let i = index * productsInPage; i < index * productsInPage + productsInPage && i < productsHtml.length; i++) {
       html.push(`<li class="products">
-      <img src="${productsHtml[i].img}" alt="product" />
-      <div class="products-content">
-         <p class="price">${productsHtml[i].price}đ</p>
-         <p class="description">${productsHtml[i].name}</p>
-         <button class="buy js-buy">Mua ngay</button>
-      </div>
-   </li>`)
+         <img src="${productsHtml[i].img}" alt="product" />
+         <div class="products-content">
+            <p class="price">${productsHtml[i].price}đ</p>
+            <p class="description">${productsHtml[i].name}</p>
+            <button class="buy js-buy">Mua ngay</button>
+         </div>
+      </li>`)
    }
 
    return html.join("");
