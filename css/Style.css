@@ -517,6 +517,12 @@ a {
    margin-top: 20px;
 }
 
+.cart-body .cart-list {
+   margin-top: 10px;
+   height: 300px;
+   overflow-y: scroll;
+}
+
 .cart-body .cart-list li{
    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3) ;
    color: #fff;

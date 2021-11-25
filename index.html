@@ -108,39 +108,14 @@
                <p>tổng </p>
             </div>
             <ul class="cart-list">
-               <li>
-                  <div class="info"><img src="./img/aonam1.PNG" alt="img">
-                     <p>Áo sơ mi nam</p>
-                  </div>
-                  <p class="p">360.000 đ</p>
-                  <div class="quantity">
-                     <button class="remove">-</button>
-                     <input type="text" value="1">
-                     <button class="add">+</button>
-                  </div>
-                  <p class="total-price-product">360.000 đ</p>
-                  <i class="fas fa-times delete-product"></i>
-               </li>
-               <li>
-                  <div class="info"><img src="./img/aonu2.PNG" alt="img">
-                     <p>Áo nữ sexy OwO</p>
-                  </div>
-                  <p class="p">99.900.000 đ</p>
-                  <div class="quantity">
-                     <button class="remove">-</button>
-                     <input type="text" value="1">
-                     <button class="add">+</button>
-                  </div>
-                  <p class="total-price-product">360.000 đ</p>
-                  <i class="fas fa-times delete-product"></i>
-               </li>
+
             </ul>
          </div>
          <div class="cart-footer">
             <div class="total-price-cart">
-               <span>Tổng :</span> <span>360.000 đ</span>
+               <span>Tổng :</span> <span class="total-price">0 đ</span>
             </div>
-            <button class="continue"> Tiếp tục mua hàng</button>
+            <button class="continue" onclick="closeModal($('.cart'))"> Tiếp tục mua hàng</button>
             <button class="clean-cart"><i class="fas fa-dumpster"></i> Xóa hết</button>
             <button class="pay-cart">Đặt hàng >></button>
          </div>

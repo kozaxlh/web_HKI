@@ -73,6 +73,9 @@ if (!localStorage.getItem('products'))
 if (!localStorage.getItem('cart'))
    cart = [];
 
+if (!localStorage.getItem('order'))
+   order = [];
+
 updateLocalStorage()
 
 let productsHtml = [...products];
@@ -494,7 +497,8 @@ function logout() {
    render();
 }
 
-function addProductToCart() {
+//cart
+function updateProductToCart() {
    let cartData = JSON.stringify(cart);
    localStorage.setItem('cart', cartData);
 }
@@ -503,7 +507,8 @@ for (let [index, btn] of buyBtns.entries()) {
    btn.addEventListener('click', () => {
       if (loginUser) {
          cart.push(createCartProduct(products[index]));
-         addProductToCart();
+         updateProductToCart();
+         renderCart();
       }
       else {
          alert('Bạn phải đăng nhập để có thể mua hàng!!');
@@ -521,6 +526,85 @@ for (let [index, btn] of buyBtns.entries()) {
    }
 }
 
+function deleteCart(index, quantity = 1) {
+   cart.splice(index, quantity);
+}
+
+function updateCount(index, count) {
+   if(count < 1) return;
+   cart[index].count = count;
+   renderCart()
+}
+let Total;
+
+function renderCart() {
+   let cartHtml = ``;
+   Total = 0;
+   cart.forEach(item => Total+= item.count * item.price)
+
+   for(let item of cart) {
+      cartHtml += `<li>
+      <div class="info"><img src="${item.img}" alt="img">
+         <p>${item.name}</p>
+      </div>
+      <p class="p">${item.price} đ</p>
+      <div class="quantity">
+         <button class="remove">-</button>
+         <input type="text" value="${item.count}">
+         <button class="add">+</button>
+      </div>
+      <p class="total-price-product">${item.price * item.count} đ</p>
+      <i class="fas fa-times delete-product"></i>
+   </li>`
+   }
+
+
+   $('.cart-list').innerHTML = cartHtml;
+
+   let deleteBtns = $$('.delete-product');
+   let addCountBtns = $$('.add');
+   let removeCountBtns = $$('.remove');
+
+   for(let i = 0 ;i < deleteBtns.length;i++) {
+      deleteBtns[i].addEventListener('click', () => {
+         deleteCart(i);
+         updateProductToCart();
+         renderCart();
+      })
+
+      addCountBtns[i].addEventListener('click', () => updateCount(i,cart[i].count + 1))
+      removeCountBtns[i].addEventListener('click',() => updateCount(i,cart[i].count - 1))
+   }
+
+   $('.total-price').innerHTML = `${Total} đ`;
+}
+
+$('.clean-cart').addEventListener('click', () => {
+   if (confirm("Bạn có muốn xóa tất cả sản phẩm không ?")) {
+      deleteCart(0, cart.length);
+      updateProductToCart()
+      renderCart();
+   }
+})
+
+$('.pay-cart').addEventListener('click', () => {
+   order.push({
+      name: "Hung",
+      diachi: "Q6",
+      phone: loginUser.phone,
+      products: [...cart],
+      totalPrice: Total,
+   })
+   cart = [];
+   localStorage.setItem('order', JSON.stringify(order));
+   localStorage.setItem('cart', JSON.stringify(cart));
+   renderCart()
+   closeModal($('.cart'))
+})
+
+renderCart()
+
+//responsive
 var nav = $('.nav')
 var navlist = $('.fa-chevron-down')
 
