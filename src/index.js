@@ -93,9 +93,6 @@ const product = $('.product .product-list')
 
 render();
 
-const buyBtns = $$('.products .js-buy');
-
-
 // Modal
 function closeModal(modalElement) {
    modalElement.classList.remove('open');
@@ -473,6 +470,30 @@ function render() {
          })
       }
    }
+   const buyBtns = $$('.products .js-buy');
+
+   for (let [index, btn] of buyBtns.entries()) {
+      btn.addEventListener('click', () => {
+         if (loginUser) {
+            cart.push(createCartProduct(products[index]));
+            updateProductToCart();
+            renderCart();
+         }
+         else {
+            alert('Bạn phải đăng nhập để có thể mua hàng!!');
+            openModal(modal);
+            $('.modal-form').innerHTML = htmlLogin;
+            runCheckLogin();
+         }
+      })
+   
+      function createCartProduct(product) {
+         let cartProduct = product;
+         cartProduct.count = 1;
+         delete cartProduct.quantity;
+         return cartProduct;
+      }
+   }
 }
 
 function htmlProduct(index = 0) {
@@ -501,29 +522,6 @@ function logout() {
 function updateProductToCart() {
    let cartData = JSON.stringify(cart);
    localStorage.setItem('cart', cartData);
-}
-
-for (let [index, btn] of buyBtns.entries()) {
-   btn.addEventListener('click', () => {
-      if (loginUser) {
-         cart.push(createCartProduct(products[index]));
-         updateProductToCart();
-         renderCart();
-      }
-      else {
-         alert('Bạn phải đăng nhập để có thể mua hàng!!');
-         openModal(modal);
-         $('.modal-form').innerHTML = htmlLogin;
-         runCheckLogin();
-      }
-   })
-
-   function createCartProduct(product) {
-      let cartProduct = product;
-      cartProduct.count = 1;
-      delete cartProduct.quantity;
-      return cartProduct;
-   }
 }
 
 function deleteCart(index, quantity = 1) {
