@@ -11,6 +11,10 @@
    font-family: "Quicksand", sans-serif;
 }
 
+html{
+   scroll-behavior: smooth;
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -172,6 +176,7 @@ a {
 }
 
 .search {
+   padding: 4px;
    margin-right: 50px;
    margin-left: 20px;
    display: inline-block;
@@ -199,6 +204,7 @@ a {
 }
 
 .cart-icon {
+   line-height: 40px;
    display: inline-block;
 }
 
@@ -207,7 +213,7 @@ a {
    color: var(--main-fontcolor);
 }
 .cart-icon a:hover {
-   line-height: 40px;
+
    display: block;
    border-left: 1px solid #f8ba66;
    border-right: 1px solid #f8ba66;
@@ -220,6 +226,7 @@ a {
 }
 
 .product {
+   margin-top: 40px;
    min-height: 100vh;
    width: 75%;
    height: 100%;
@@ -328,7 +335,7 @@ a {
    outline: none;
 }
 .top-sale h3{
-   margin-top: 62px;
+   margin-top: 80px;
 }
 
 .clear {
