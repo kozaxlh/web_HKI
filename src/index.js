@@ -475,7 +475,7 @@ function render() {
    for (let [index, btn] of buyBtns.entries()) {
       btn.addEventListener('click', () => {
          if (loginUser) {
-            cart.push(createCartProduct(products[index]));
+            cart.push(createCartProduct(productsHtml[index]));
             updateProductToCart();
             renderCart();
          }
