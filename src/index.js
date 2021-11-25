@@ -76,6 +76,7 @@ if (!localStorage.getItem('cart'))
 updateLocalStorage()
 
 let productsHtml = [...products];
+let productsInPage = 8;
 
 const modal = $('.modal')
 const btnOpenRegister = $('.js-register')
@@ -523,5 +524,13 @@ for (let [index, btn] of buyBtns.entries()) {
 var nav = $('.nav')
 var navlist = $('.fa-chevron-down')
 
-
+navlist.onclick = function name(params) {
+   let isclose = nav.clientHeight === 48;
+   if (isclose) {
+       nav.style.height = 'auto'
+   }
+   else {
+       nav.style.height = null
+   }
+}
 
