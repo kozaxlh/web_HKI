@@ -73,6 +73,9 @@ if (!localStorage.getItem('products'))
 if (!localStorage.getItem('cart'))
    cart = [];
 
+if (!localStorage.getItem('order'))
+   order = [];
+
 updateLocalStorage()
 
 let productsHtml = [...products];
@@ -532,12 +535,12 @@ function updateCount(index, count) {
    cart[index].count = count;
    renderCart()
 }
+let Total;
 
 function renderCart() {
    let cartHtml = ``;
-   let subTotal = 0;
-
-   cart.forEach(item => subTotal+= item.count * item.price)
+   Total = 0;
+   cart.forEach(item => Total+= item.count * item.price)
 
    for(let item of cart) {
       cartHtml += `<li>
@@ -573,8 +576,7 @@ function renderCart() {
       removeCountBtns[i].addEventListener('click',() => updateCount(i,cart[i].count - 1))
    }
 
-   $('.total-price').innerHTML = subTotal
-
+   $('.total-price').innerHTML = `${Total} đ`;
 }
 
 $('.clean-cart').addEventListener('click', () => {
@@ -583,6 +585,21 @@ $('.clean-cart').addEventListener('click', () => {
       updateProductToCart()
       renderCart();
    }
+})
+
+$('.pay-cart').addEventListener('click', () => {
+   order.push({
+      name: "Hung",
+      diachi: "Q6",
+      phone: loginUser.phone,
+      products: [...cart],
+      totalPrice: Total,
+   })
+   cart = [];
+   localStorage.setItem('order', JSON.stringify(order));
+   localStorage.setItem('cart', JSON.stringify(cart));
+   renderCart()
+   closeModal($('.cart'))
 })
 
 renderCart()
