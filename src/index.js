@@ -6,6 +6,7 @@ let loginUser = JSON.parse(localStorage.getItem('loginUser'));
 let products = JSON.parse(localStorage.getItem('products'));
 let cart = JSON.parse(localStorage.getItem('cart'));
 let order = JSON.parse(localStorage.getItem('order'));
+let pageProduct = []
 
 
 if (!localStorage.getItem('myUsers'))
@@ -92,6 +93,8 @@ const navItems = $$('.nav-content-list li a')
 const product = $('.product .product-list')
 
 render();
+
+let productBtn = $$('.products a')
 
 // Modal
 function closeModal(modalElement) {
@@ -500,7 +503,7 @@ function htmlProduct(index = 0) {
    let html = [];
    for (let i = index * productsInPage; i < index * productsInPage + productsInPage && i < productsHtml.length; i++) {
       html.push(`<li class="products">
-         <img src="${productsHtml[i].img}" alt="product" />
+         <a href="#"><img src="${productsHtml[i].img}" alt="product" /></a>
          <div class="products-content">
             <p class="price">${productsHtml[i].price}đ</p>
             <p class="description">${productsHtml[i].name}</p>
@@ -516,6 +519,13 @@ function logout() {
    loginUser = null;
    updateLocalStorage();
    render();
+}
+for (let i = 0; i < productBtn.length ;i++) {
+   productBtn[i].addEventListener('click', () => {
+      pageProduct = productsHtml[i];
+      localStorage.setItem('pageProduct', JSON.stringify(pageProduct));
+      window.location = "./pro_info.html";
+   })
 }
 
 //cart
@@ -584,20 +594,6 @@ $('.clean-cart').addEventListener('click', () => {
    }
 })
 
-// $('.pay-cart').addEventListener('click', () => {
-//    order.push({
-//       name: "Hung",
-//       diachi: "Q6",
-//       phone: loginUser.phone,
-//       products: [...cart],
-//       totalPrice: Total,
-//    })
-//    cart = [];
-//    localStorage.setItem('order', JSON.stringify(order));
-//    localStorage.setItem('cart', JSON.stringify(cart));
-//    renderCart()
-//    closeModal($('.cart'))
-// })
 
 renderCart()
 
