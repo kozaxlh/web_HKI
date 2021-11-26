@@ -533,11 +533,10 @@ function updateCount(index, count) {
    cart[index].count = count;
    renderCart()
 }
-let Total;
 
 function renderCart() {
    let cartHtml = ``;
-   Total = 0;
+   let Total = 0;
    cart.forEach(item => Total+= item.count * item.price)
 
    for(let item of cart) {
@@ -585,20 +584,20 @@ $('.clean-cart').addEventListener('click', () => {
    }
 })
 
-$('.pay-cart').addEventListener('click', () => {
-   order.push({
-      name: "Hung",
-      diachi: "Q6",
-      phone: loginUser.phone,
-      products: [...cart],
-      totalPrice: Total,
-   })
-   cart = [];
-   localStorage.setItem('order', JSON.stringify(order));
-   localStorage.setItem('cart', JSON.stringify(cart));
-   renderCart()
-   closeModal($('.cart'))
-})
+// $('.pay-cart').addEventListener('click', () => {
+//    order.push({
+//       name: "Hung",
+//       diachi: "Q6",
+//       phone: loginUser.phone,
+//       products: [...cart],
+//       totalPrice: Total,
+//    })
+//    cart = [];
+//    localStorage.setItem('order', JSON.stringify(order));
+//    localStorage.setItem('cart', JSON.stringify(cart));
+//    renderCart()
+//    closeModal($('.cart'))
+// })
 
 renderCart()
 
