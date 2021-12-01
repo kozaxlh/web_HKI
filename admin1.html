@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="SHORTCUT ICON" href="./image/favaicon.ico">
+    <title>Quản lí NAK SHOP</title>
+    <link rel="stylesheet" href="./css/admin.css">
+    <link rel="stylesheet" href="./css/admins.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./icon/fontawesome-free-5.15.4-web/css/all.min.css">
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="logo-details">
+            <i class='bx bxl-c-plus-plus'></i>
+            <span class="sign"><img src="./img/logo/gumac1.png" alt="logo" width="80" height="75"></span>
+        </div>
+        <ul class="nav-links">
+            <li>
+                <a href="./admin.html" style="text-decoration: none;color: white;">
+                    <i class="fas fa-archive" style="margin-right:3px;margin-left: 2px;"></i>
+                    Quản lí sản phẩm
+                </a>
+            </li>
+            <li><a href="./admin1.html" style="text-decoration: none;color: white;">
+                    <i class="fas fa-shopping-cart" style="margin-right:3px;margin-left: 2px;"></i>
+                    Quản lí đơn hàng
+                </a></li>
+            <li>
+                <a href="./admin2.html" style="text-decoration: none;color: white;">
+                    <i class="fas fa-users" style="margin-right:3px;margin-left: 2px;"></i>
+                    Quản lí người dùng
+                </a>
+            </li>
+            <li><a href="./admin3.html" style="text-decoration: none;color: white;">
+                    <i class="far fa-chart-bar" style="margin-right:3px;margin-left: 2px;"></i>
+                    Thống kê đơn hàng
+                </a></li>
+            <li><a href="./index.html" class="nav-links__logOut" style="text-decoration: none;color: white;">
+                    <i class="fas fa-power-off" style="margin-right:3px;margin-left: 2px;"></i>
+                    Đăng xuất
+                </a></li>
+
+        </ul>
+    </div>
+    <section class="home-section">
+        <nav>
+            <div class="sidebar-button">
+                <i class='bx bx-menu sidebarBtn'></i>
+                <span class="dashboard">Quản lí đơn hàng</span>
+            </div>
+
+        </nav>
+        <div class="home-content">
+
+        
+        <!-- Quản lí đơn hàng-->
+        <div class="sales-boxes">
+            <div class="recent-sales box">
+                <div class="sales-details">
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <script>
+            let order = JSON.parse(localStorage.getItem('order'))
+            let index = 1;
+            let idHTML = ``;
+            let nameHTML = ``
+            let productHTML = ``
+            let priceHTML = ``
+            let phoneHTML = ``
+            let addressHTML = ``
+            let checkboxHTML = ``
+            for(let item of order) {
+                idHTML+= `<li>${index++}</li>`
+                nameHTML+= `<li>${item.name}</li>`
+                productHTML+= `<li><a href="#" class="btn__showitem" index="${index-1}">Xem sản phẩm</a></li>`
+                priceHTML+= `<li>$${item.totalPrice}</li>`
+                phoneHTML+= `<li>${item.phone}</li>`
+                addressHTML+= `<li>${item.diachi}</li>`
+                checkboxHTML+= `<li><input type="checkbox" value="None" id="squaredcheck" class="checkbox1" name="check"
+                                checked /></li>`
+            }
+            let content = document.querySelector('.sales-details');
+            content.innerHTML= `<ul class="details">
+                        <li class="topic">ID</li>
+                        ${idHTML}
+                    </ul>
+                    <ul class="details">
+                        <li class="topic">Khách hàng</li>
+                        ${nameHTML}
+                    </ul>
+                    <ul class="details">
+                        <li class="topic">Tên sản phẩm</li>
+                        ${productHTML}
+                    </ul>
+
+                    <ul class="details">
+                        <li class="topic">Giá</li>
+                        ${priceHTML}
+                    </ul>
+                    <ul class="details">
+                        <li class="topic">Số điện thoại</li>
+                        ${phoneHTML}
+                    </ul>
+                    <ul class="details">
+                        <li class="topic">Địa chỉ</li>
+                        ${addressHTML}
+                    </ul>
+                    <ul class="details">
+                        <li class="topic">Đã giao</li>
+                        ${checkboxHTML}
+                    </ul>`
+            </script>
+</body>
+
+</html>

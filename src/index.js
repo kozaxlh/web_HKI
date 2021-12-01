@@ -379,18 +379,17 @@ function runCheckLogin() {
       ],
       onSubmit: function (data) {
          checkLogin(data)
+         window.location = "./index.html"
       }
    });
 
    function checkLogin(data) {
       let isFound = false;
       for (let user of users) {
-         if (data.email === user.email) {
-            if (data.password == user.password) {
-               isFound = true;
-               checkUserType(user)
-               break;
-            }
+         if (data.email === user.email && data.password === user.password && user.typeUser === 'member') {
+            isFound = true;
+            loginUser = user;
+            updateLocalStorage();
          }
       }
       if (!isFound) {
@@ -407,17 +406,6 @@ function runCheckLogin() {
          input.value = '';
       }
    }
-
-   function checkUserType(user) {
-      if (user.typeUser === 'admin')
-         window.location = "./admin.html"
-      else {
-         loginUser = user;
-         updateLocalStorage()
-         window.location = "./index.html"
-      }
-   }
-
    enableSubmit();
 }
 
@@ -489,7 +477,7 @@ function render() {
             runCheckLogin();
          }
       })
-   
+
       function createCartProduct(product) {
          let cartProduct = product;
          cartProduct.count = 1;
@@ -520,7 +508,7 @@ function logout() {
    updateLocalStorage();
    render();
 }
-for (let i = 0; i < productBtn.length ;i++) {
+for (let i = 0; i < productBtn.length; i++) {
    productBtn[i].addEventListener('click', () => {
       pageProduct = productsHtml[i];
       localStorage.setItem('pageProduct', JSON.stringify(pageProduct));
@@ -539,7 +527,7 @@ function deleteCart(index, quantity = 1) {
 }
 
 function updateCount(index, count) {
-   if(count < 1) return;
+   if (count < 1) return;
    cart[index].count = count;
    renderCart()
 }
@@ -547,9 +535,9 @@ function updateCount(index, count) {
 function renderCart() {
    let cartHtml = ``;
    let Total = 0;
-   cart.forEach(item => Total+= item.count * item.price)
+   cart.forEach(item => Total += item.count * item.price)
 
-   for(let item of cart) {
+   for (let item of cart) {
       cartHtml += `<li>
       <div class="info"><img src="${item.img}" alt="img">
          <p>${item.name}</p>
@@ -572,15 +560,15 @@ function renderCart() {
    let addCountBtns = $$('.add');
    let removeCountBtns = $$('.remove');
 
-   for(let i = 0 ;i < deleteBtns.length;i++) {
+   for (let i = 0; i < deleteBtns.length; i++) {
       deleteBtns[i].addEventListener('click', () => {
          deleteCart(i);
          updateProductToCart();
          renderCart();
       })
 
-      addCountBtns[i].addEventListener('click', () => updateCount(i,cart[i].count + 1))
-      removeCountBtns[i].addEventListener('click',() => updateCount(i,cart[i].count - 1))
+      addCountBtns[i].addEventListener('click', () => updateCount(i, cart[i].count + 1))
+      removeCountBtns[i].addEventListener('click', () => updateCount(i, cart[i].count - 1))
    }
 
    $('.total-price').innerHTML = `${Total} đ`;
@@ -604,10 +592,10 @@ var navlist = $('.fa-chevron-down')
 navlist.onclick = function name(params) {
    let isclose = nav.clientHeight === 48;
    if (isclose) {
-       nav.style.height = 'auto'
+      nav.style.height = 'auto'
    }
    else {
-       nav.style.height = null
+      nav.style.height = null
    }
 }
 
