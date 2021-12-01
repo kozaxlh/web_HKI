@@ -64,8 +64,39 @@
             </div>
         </div>
         </div>
-
+        <div class="cart">
+            <div class="modal-cart">
+               <div class="cart-head">
+                  <h3>Giỏ hàng</h3><i class="fas fa-times" onclick="closeModal(document.querySelector('.cart'))">X</i>
+               </div>
+               <div class="cart-body">
+                  <div class="sub-cart">
+                     <p>Thông tin Sản phẩm</p>
+                     <p>Giá tiền</p>
+                     <p>số lượng</p>
+                     <p>tổng </p>
+                  </div>
+                  <ul class="cart-list">
+      
+                  </ul>
+               </div>
+               <div class="cart-footer">
+                  <div class="total-price-cart">
+                     <span>Tổng :</span> <span class="total-price">0 đ</span>
+                  </div>
+               </div>
+            </div>
+         </div>
         <script>
+            let $ = document.querySelector.bind(document);
+            let $$ = document.querySelectorAll.bind(document);
+            function closeModal(modalElement) {
+               modalElement.classList.remove('open');
+            }
+
+            function openModal(modalElement) {
+               modalElement.classList.add('open');
+            }
             let order = JSON.parse(localStorage.getItem('order'))
             let index = 1;
             let idHTML = ``;
@@ -78,7 +109,7 @@
             for(let item of order) {
                 idHTML+= `<li>${index++}</li>`
                 nameHTML+= `<li>${item.name}</li>`
-                productHTML+= `<li><a href="#" class="btn__showitem" index="${index-1}">Xem sản phẩm</a></li>`
+                productHTML+= `<li><a href="#" class="btn__showitem" index="${index - 2}">Xem sản phẩm</a></li>`
                 priceHTML+= `<li>$${item.totalPrice}</li>`
                 phoneHTML+= `<li>${item.phone}</li>`
                 addressHTML+= `<li>${item.diachi}</li>`
@@ -115,6 +146,39 @@
                         <li class="topic">Đã giao</li>
                         ${checkboxHTML}
                     </ul>`
+            
+            let showBtns = document.querySelectorAll('.btn__showitem')
+            for(let btn of showBtns) {
+                btn.addEventListener('click',() => {
+                    openModal(document.querySelector('.cart'))
+                    let index = btn.getAttribute('index')
+                    renderCart(order[index].products)
+                })
+            }
+
+
+            function renderCart(cart) {
+               let cartHtml = ``;
+               let Total = 0;
+               cart.forEach(item => Total += item.count * item.price)
+                        
+               for (let item of cart) {
+                  cartHtml += `<li>
+                  <div class="info"><img src="${item.img}" alt="img">
+                     <p>${item.name}</p>
+                  </div>
+                  <p class="p">${item.price} đ</p>
+                  <div class="quantity">
+                     <input type="text" value="${item.count}">
+                  </div>
+                  <p class="total-price-product">${item.price * item.count} đ</p>
+                  <i class="fas fa-times delete-product"></i>
+               </li>`
+               }
+            
+               $('.cart-list').innerHTML = cartHtml;
+               $('.total-price').innerHTML = `${Total} đ`;
+            }
             </script>
 </body>
 
