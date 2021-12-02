@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="./css/admins.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./icon/fontawesome-free-5.15.4-web/css/all.min.css">
+  <script src="./src/validator.js"></script>
 </head>
 
 <body>
@@ -168,7 +169,7 @@
       </div>
     </div>
 
-    <div class="modal-content__addItem">
+    <form class="modal-content__addItem">
       <div class="form-overlay"></div>
       <div class="form-addItem">
         <div class="form-addItem__header">
@@ -179,26 +180,45 @@
           <div class="submit-field">
             <input name="title" type="text" class="submit-field__input" id="menu-item-name"
               placeholder="Tên sản phẩm">
+            <span class="message-error"></span>
           </div>
           <div class="submit-field">
-            <textarea name="description" type="text" class="submit-field__input" id="menu-item-name"
-              placeholder="Mô tả sản phẩm" cols="30" rows="10"
-              style="min-width:95%;max-width:95%; max-height: 80px;min-height: 80px;margin-left: 15px"></textarea>
+            <input name="count" type="number" class="submit-field__input" id="menu-item-name"
+              placeholder="Số lượng nhập về" cols="30" rows="10"
+            >
+            <span class="message-error"></span>
+          </div>
+          <div class="submit-field">
+            <select name="type" class="submit-field__input">
+              <option value="maleCloth">Quần áo nam</option>
+              <option value="femaleCloth">Quần áo nữ</option>
+              <option value="Giay">Giày nam</option>
+              <option value="Giaynu">Giày nữ</option>
+              <option value="phukien">Phụ kiện</option>
+            </select>
+            <span class="message-error"></span>
           </div>
           <div class="submit-field">
             <input name="price" type="number" class="submit-field__input" id="menu-item-name"
               placeholder="Giá sản phẩm">
+            <span class="message-error"></span>
           </div>
           <div class="submit-field">
             <input name="image" type="text" class="submit-field__input" id="menu-item-name"
-              placeholder="Link hình ảnh">
+        span placeholder="Link hình ảnh">
+           <div class="message-error"></div>
+          </div>
+          <div class="submit-field" style="display:none">
+            <input name="index" type="number" class="submit-field__input myIndex" id="menu-item-name"
+        span placeholder="Link hình ảnh" value='-1'>
+           <div class="message-error"></div>
           </div>
         </div>
         <div class="form-addItem__btnSave">
           <button type="submit" class="submit-save">Lưu</button>
         </div>
       </div>
-    </div>
+    </form>
     
 
     <script src="script.js"></script>

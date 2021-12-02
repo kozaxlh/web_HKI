@@ -253,7 +253,7 @@ for (let item of navItems) {
    item.addEventListener('click', () => {
       productsHtml = [];
       for (let product of products) {
-         if (item.getAttribute('typeproduct') == product.type)
+         if (item.getAttribute('typeproduct').toLowerCase() == product.type.toLowerCase())
             productsHtml.push(product);
       }
       render();

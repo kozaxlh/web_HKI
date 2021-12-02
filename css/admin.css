@@ -350,7 +350,10 @@ nav .profile-details i{
     right: 0;
     bottom: 0;
     left: 0;
-    display: flex;
+}
+
+.modal-content__addItem.open{
+  display: flex;
 }
 .modal-content__addItem .form-overlay{
     position: absolute;
@@ -480,6 +483,17 @@ nav .profile-details i{
   margin-top: 4px;
   margin-left: 25px;
 }
+
+.message-error {
+  padding-left: 12px;
+  font-size: 14px;
+  color: #f10;
+}
+
+.message-error i {
+  padding-right: 6px;
+}
+
 /* Responsive Media Query */
 @media (max-width: 1240px) {
   .sidebar{
