@@ -59,6 +59,8 @@ if (!localStorage.getItem('products'))
       },
    ]
 
+updateProductToCart()
+
 function closeAddItem(params) {
   modalAddItem.classList.remove('open');
 }
