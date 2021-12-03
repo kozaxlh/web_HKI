@@ -63,7 +63,6 @@
             ],
             onSubmit: function (data) {
                checkLogin(data);
-               window.location = './admin.html'
             },
          });
 
@@ -81,6 +80,9 @@
             if (!isFound) {
                alert("Sai tài khoàn hoặc mật khẩu")
                resetInput();
+            }
+            else {
+               window.location = './admin.html'
             }
          }
 
