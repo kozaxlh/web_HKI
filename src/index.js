@@ -170,7 +170,7 @@ let htmlRegister = `
    </div>
    <span class="message-error"></span>
 </div>
-<button class="form-submit">Submit</button>
+<button class="form-submit">Đăng ký</button>
 </form>
 `
 
@@ -204,7 +204,7 @@ let htmlLogin = `
       />
       <span class="message-error"></span>
    </div>
-   <button class="form-submit">Submit</button>
+   <button class="form-submit">Đăng nhập</button>
    <p>Bạn chưa có tài khoản? <a href="#" onclick="tranferRegister()">Đăng ký</a></p>
    <a href="./login.html">Đăng nhập admin</a>
 </form>
@@ -403,7 +403,6 @@ function runCheckLogin() {
       ],
       onSubmit: function (data) {
          checkLogin(data)
-         window.location = "./index.html"
       }
    });
 
@@ -414,6 +413,7 @@ function runCheckLogin() {
             isFound = true;
             loginUser = user;
             updateLocalStorage();
+            window.location = "./index.html"
          }
       }
       if (!isFound) {
@@ -452,6 +452,7 @@ function enableSubmit() {
 function render() {
    let myLogo = $('.nav .login-register');
 
+   //Number Page
    function htmlNumberPage() {
       let pages = Math.ceil(productsHtml.length / productsInPage);
       let pagesHTML = [];
@@ -463,21 +464,23 @@ function render() {
       }
       return pagesHTML.join("");
    }
+   $('.product-pages').innerHTML = htmlNumberPage();
 
+   //render UserLogin
    if (loginUser) {
       myLogo.innerHTML = `<div class="user-login">
           <p>Xin chào ${loginUser.email}</p>
           <a href="" id="logout" onclick="logout()">Đăng xuất</a>
        </div>`
    }
+   //render product
    let isInner = false;
-
-   $('.product-pages').innerHTML = htmlNumberPage();
 
    if (!isInner) {
       $('.product-list').innerHTML = htmlProduct();
       isInner = true;
    }
+
    if (isInner) {
       for (let item of $$('.product-pages-number')) {
          item.addEventListener('click', () => {
@@ -485,11 +488,14 @@ function render() {
          })
       }
    }
+
+   //Handle buyBtn
    const buyBtns = $$('.products .js-buy');
 
    for (let [index, btn] of buyBtns.entries()) {
       btn.addEventListener('click', () => {
          if (loginUser) {
+            alert('Đã thêm vào giỏ hàng')
             cart.push(createCartProduct(productsHtml[index]));
             updateProductToCart();
             renderCart();
@@ -519,7 +525,7 @@ function htmlProduct(index = 0) {
          <div class="products-content">
             <p class="price">${productsHtml[i].price}đ</p>
             <p class="description">${productsHtml[i].name}</p>
-            <button class="buy js-buy">Mua ngay</button>
+            <button class="buy js-buy">Thêm vào giỏ hàng</button>
          </div>
       </li>`)
    }
@@ -532,6 +538,7 @@ function logout() {
    updateLocalStorage();
    render();
 }
+
 for (let i = 0; i < productBtn.length; i++) {
    productBtn[i].addEventListener('click', () => {
       pageProduct = productsHtml[i];
