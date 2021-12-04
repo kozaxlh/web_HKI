@@ -50,12 +50,7 @@
   text-decoration: none;
   transition: all 0.4s ease;
 }
-.sidebar .nav-links li a.active{
-  
-}
-.sidebar .nav-links li a:hover{
-  
-}
+
 .sidebar .nav-links li i{
   min-width: 60px;
   text-align: center;
@@ -363,7 +358,7 @@ nav .profile-details i{
 }
 .form-addItem {
     width: 550px;
-    height: 400px;
+    height: 420px;
     background-color: white;
     margin: auto;
     z-index: 1;
@@ -383,8 +378,9 @@ nav .profile-details i{
     height: 50px;
     border:none;
     background-color: #2260DA;
+    cursor: pointer;
 }
-.modal-content__addItem .form-addItem .form-addItem__header .form-addItem__header--close:active{
+.modal-content__addItem .form-addItem .form-addItem__header .form-addItem__header--close:hover{
     background-color: #DC3139;
 }
 .modal-content__addItem .form-addItem__content{
@@ -403,6 +399,7 @@ nav .profile-details i{
 .submit-save{
     background-color:#2260DA;
     color: white;
+    border: 0px;
     text-align: center;
     width: 95%;
     height: 40px;

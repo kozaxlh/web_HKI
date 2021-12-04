@@ -222,8 +222,6 @@ btnOpenLogin.addEventListener('click', () => {
    runCheckLogin();
 });
 
-
-
 function tranferRegister() {
    $('.modal-form').innerHTML = htmlRegister
    runCheckRegister();
@@ -342,24 +340,24 @@ function runCheckRegister() {
 
    function checkRegister(data) {
       let isFound = false;
-      let s = ``
+      let errorMessage = ``
       for (let user of users) {
          if (data.email === user.email && data.phone === user.phone) {
             isFound = true;
-            s = `Email và số điện thoại này đã được đăng ký`
+            errorMessage = `Email và số điện thoại này đã được đăng ký`
          }
          else if (data.email === user.email) {
             isFound = true;
-            s = `Email này đã được đăng ký. `
+            errorMessage = `Email này đã được đăng ký. `
          }
          else if (data.phone === user.phone) {
             isFound = true;
-            s = `Số điện thoại này đã được đăng ký`
+            errorMessage = `Số điện thoại này đã được đăng ký`
          }
 
          if (isFound) {
             $('.warning').innerHTML = `<div class="block-warning">
-                    <i class="fas fa-exclamation-circle"></i> ${s}</div>`
+                    <i class="fas fa-exclamation-circle"></i> ${errorMessage}</div>`
             break;
          }
       }

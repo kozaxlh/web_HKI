@@ -19,6 +19,7 @@
       />
       <link rel="SHORTCUT ICON" href="./img/favaicon.ico" />
       <title>NAK Shop</title>
+      <script src="./src/validator.js"></script>
       <link rel="stylesheet" href="./css/pro_inf.css" />
    </head>
 
@@ -77,9 +78,7 @@
          </div>
       </header>
       <div class="content">
-         <div class="content-container">
-            
-         </div>
+         <div class="content-container"></div>
       </div>
       <footer id="footer">
          <div class="customer-support">
@@ -101,6 +100,37 @@
             <a href=""><i class="fab fa-youtube-square"></i></a>
          </div>
       </footer>
+
+      <div class="modal">
+         <div class="modal-form"></div>
+      </div>
+
+      <div class="cart">
+         <div class="modal-cart">
+            <div class="cart-head">
+               <h3>Giỏ hàng</h3><i class="fas fa-times" onclick="closeModal($('.cart'))"></i>
+            </div>
+            <div class="cart-body">
+               <div class="sub-cart">
+                  <p>Thông tin Sản phẩm</p>
+                  <p>Giá tiền</p>
+                  <p>số lượng</p>
+                  <p>tổng </p>
+               </div>
+               <ul class="cart-list">
+   
+               </ul>
+            </div>
+            <div class="cart-footer">
+               <div class="total-price-cart">
+                  <span>Tổng :</span> <span class="total-price">0 đ</span>
+               </div>
+               <button class="continue" onclick="closeModal($('.cart'))"> Tiếp tục mua hàng</button>
+               <button class="clean-cart"><i class="fas fa-dumpster"></i> Xóa hết</button>
+               <button class="pay-cart"><a href="./order.html">Đặt hàng >></a></button>
+            </div>
+         </div>
+      </div>
       <script src="./src/info.js"></script>
    </body>
 </html>

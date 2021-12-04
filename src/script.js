@@ -1,8 +1,8 @@
-let $ = document.querySelector.bind(document);
-let $$ = document.querySelectorAll.bind(document);
+const $ = document.querySelector.bind(document);
+const $$ = document.querySelectorAll.bind(document);
 
-let sidebar = document.querySelector(".sidebar");
-let sidebarBtn = document.querySelector(".sidebarBtn");
+let sidebar = $(".sidebar");
+let sidebarBtn = $(".sidebarBtn");
 
 let products = JSON.parse(localStorage.getItem("products"));
 
@@ -59,7 +59,7 @@ if (!localStorage.getItem('products'))
       },
    ]
 
-updateProductToCart()
+updateProduct()
 
 function closeAddItem(params) {
   modalAddItem.classList.remove('open');
@@ -67,6 +67,7 @@ function closeAddItem(params) {
 function openAddItem(params) {
   modalAddItem.classList.add('open');
 }
+
 sidebarBtn.onclick = function () {
   sidebar.classList.toggle("active");
   if (sidebar.classList.contains("active"))
@@ -79,9 +80,9 @@ sidebarBtn.onclick = function () {
 render()
 
 //Click thêm sản phẩm
-const openAdd = document.querySelector('.content__btn--additem');
-const modalAddItemClose = document.querySelector('.form-addItem__header--close');
-const modalAddItem = document.querySelector('.modal-content__addItem');
+const openAdd = $('.content__btn--additem');
+const modalAddItemClose = $('.form-addItem__header--close');
+const modalAddItem = $('.modal-content__addItem');
 
 
 function render() {
@@ -108,7 +109,6 @@ function render() {
     })
   }
 }
-
 
 function htmlProduct() {
   let html = [];
@@ -144,9 +144,9 @@ function deleteCart(index, quantity = 1) {
   products.splice(index, quantity);
 }
 
-function updateProductToCart() {
-  let cartData = JSON.stringify(products);
-  localStorage.setItem('products', cartData);
+function updateProduct() {
+  let productData = JSON.stringify(products);
+  localStorage.setItem('products', productData);
 }
 
 function nonAccentVietnamese(str) {
@@ -178,7 +178,7 @@ function deleteInput() {
   $('.myIndex').value = -1;
 }
 
-
+//  Check add Item form
 Validator({
   form: '.modal-content__addItem',
   formGroupSelector: '.submit-field',
@@ -209,6 +209,5 @@ function addProduct(data, index) {
     products.push(myProduct)
   else 
     products.splice(index,1,myProduct)
-  updateProductToCart()
+  updateProduct()
 }
-
