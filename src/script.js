@@ -93,7 +93,7 @@ function render() {
     deleteBtns[i].addEventListener('click', () => {
       if (confirm('Bạn có chắc chắc muốn xóa không ?'))
         deleteCart(i)
-      updateProductToCart();
+      updateProduct();
       render();
     })
   
