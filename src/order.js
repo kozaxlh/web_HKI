@@ -69,12 +69,14 @@ Validator({
       Validator.isCorrectPhone('input[name="phone"]'),
    ],
    onSubmit: function (data) {
+      let today = new Date();
       order.push({
          name: data.name,
          diachi: data.address,
          phone: data.phone,
          products: [...cart],
          totalPrice: Total,
+         date: today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate(),
          isDelivered: false,
       })
       cart = [];

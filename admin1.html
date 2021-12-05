@@ -107,6 +107,7 @@
             let phoneHTML = ``
             let addressHTML = ``
             let checkboxHTML = ``
+            let dateHTML = ``
             for(let item of order) {
                 let checked = ''
                 if(item.isDelivered) {
@@ -119,6 +120,7 @@
                 phoneHTML+= `<li>${item.phone}</li>`
                 addressHTML+= `<li>${item.diachi}</li>`
                 checkboxHTML+= `<li><input type="checkbox" value="None" id="squaredcheck" index="${index - 2}" class="checkbox1" name="check" ${checked}/></li>`
+                dateHTML+= `<li>${item.date}</li>`
             }
             let content = $('.sales-details');
             content.innerHTML= `<ul class="details">
@@ -145,6 +147,10 @@
                     <ul class="details">
                         <li class="topic">Địa chỉ</li>
                         ${addressHTML}
+                    </ul>
+                    <ul class="details">
+                        <li class="topic">Thời gian đặt hàng</li>
+                        ${dateHTML}
                     </ul>
                     <ul class="details">
                         <li class="topic">Đã giao</li>
