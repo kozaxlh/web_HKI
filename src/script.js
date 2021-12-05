@@ -7,57 +7,57 @@ let sidebarBtn = $(".sidebarBtn");
 let products = JSON.parse(localStorage.getItem("products"));
 
 if (!localStorage.getItem('products'))
-   products = [
-      {
-         name: 'Giày thể thao GG08',
-         type: 'Giay',
-         price: 3900000,
-         quantity: 200,
-         img: './img/giaynam.PNG',
-      },
-      {
-         name: 'Giày thể thao GG09',
-         type: 'Giay',
-         price: 3900000,
-         quantity: 200,
-         img: './img/giaynam2.PNG',
-      },
-      {
-         name: 'Giày thể thao GG10',
-         type: 'Giay',
-         price: 3900000,
-         quantity: 200,
-         img: './img/giaynam3.PNG',
-      },
-      {
-         name: 'Áo nam năng động cá tính',
-         type: 'maleCloth',
-         price: 3900000,
-         quantity: 200,
-         img: './img/aonam1.PNG',
-      },
-      {
-         name: 'Áo nam năng động cá tính',
-         type: 'maleCloth',
-         price: 3900000,
-         quantity: 200,
-         img: './img/aonam2.PNG',
-      },
-      {
-         name: 'Áo nam năng động cá tính',
-         type: 'maleCloth',
-         price: 3900000,
-         quantity: 200,
-         img: './img/aonam3.PNG',
-      },
-      {
-         name: 'Áo nữ',
-         type: 'femaleCloth',
-         price: 3900000,
-         quantity: 200,
-         img: './img/aonu1.PNG',
-      },
-   ]
+  products = [
+    {
+      name: 'Giày thể thao GG08',
+      type: 'Giay',
+      price: 3900000,
+      quantity: 200,
+      img: './img/giaynam.PNG',
+    },
+    {
+      name: 'Giày thể thao GG09',
+      type: 'Giay',
+      price: 3900000,
+      quantity: 200,
+      img: './img/giaynam2.PNG',
+    },
+    {
+      name: 'Giày thể thao GG10',
+      type: 'Giay',
+      price: 3900000,
+      quantity: 200,
+      img: './img/giaynam3.PNG',
+    },
+    {
+      name: 'Áo nam năng động cá tính',
+      type: 'maleCloth',
+      price: 3900000,
+      quantity: 200,
+      img: './img/aonam1.PNG',
+    },
+    {
+      name: 'Áo nam năng động cá tính',
+      type: 'maleCloth',
+      price: 3900000,
+      quantity: 200,
+      img: './img/aonam2.PNG',
+    },
+    {
+      name: 'Áo nam năng động cá tính',
+      type: 'maleCloth',
+      price: 3900000,
+      quantity: 200,
+      img: './img/aonam3.PNG',
+    },
+    {
+      name: 'Áo nữ',
+      type: 'femaleCloth',
+      price: 3900000,
+      quantity: 200,
+      img: './img/aonu1.PNG',
+    },
+  ]
 
 updateProduct()
 
@@ -96,7 +96,7 @@ function render() {
       updateProduct();
       render();
     })
-  
+
     editBtns[i].addEventListener('click', () => {
       $('input[name="title"]').value = products[i].name;
       $('input[name="count"]').value = products[i].quantity;
@@ -205,9 +205,11 @@ function addProduct(data, index) {
     price: parseInt(data.price),
     quantity: parseInt(data.count)
   }
-  if (index === -1)
+  if (index == -1) {
     products.push(myProduct)
-  else 
-    products.splice(index,1,myProduct)
+  }
+  else {
+    products.splice(index, 1, myProduct)
+  }
   updateProduct()
 }

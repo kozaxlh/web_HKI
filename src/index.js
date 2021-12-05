@@ -94,8 +94,6 @@ const product = $('.product .product-list')
 
 render();
 
-let productBtn = $$('.products a')
-
 // Modal
 function closeModal(modalElement) {
    modalElement.classList.remove('open');
@@ -486,6 +484,16 @@ function render() {
          })
       }
    }
+   //link to Pro Info
+   let productBtn = $$('.products a')
+
+   for (let i = 0; i < productBtn.length; i++) {
+      productBtn[i].addEventListener('click', () => {
+         pageProduct = productsHtml[i];
+         localStorage.setItem('pageProduct', JSON.stringify(pageProduct));
+         window.location = "./pro_info.html";
+      })
+   }
 
    //Handle buyBtn
    const buyBtns = $$('.products .js-buy');
@@ -537,14 +545,6 @@ function logout() {
    render();
 }
 
-for (let i = 0; i < productBtn.length; i++) {
-   productBtn[i].addEventListener('click', () => {
-      pageProduct = productsHtml[i];
-      localStorage.setItem('pageProduct', JSON.stringify(pageProduct));
-      window.location = "./pro_info.html";
-   })
-}
-
 //cart
 function updateProductToCart() {
    let cartData = JSON.stringify(cart);
@@ -558,6 +558,7 @@ function deleteCart(index, quantity = 1) {
 function updateCount(index, count) {
    if (count < 1) return;
    cart[index].count = count;
+   updateProductToCart();
    renderCart()
 }
 
