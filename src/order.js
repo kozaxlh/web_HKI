@@ -3,10 +3,7 @@ const $$ = document.querySelectorAll.bind(document);
 
 let loginUser = JSON.parse(localStorage.getItem('loginUser'));
 let cart = JSON.parse(localStorage.getItem('cart'));
-let order = JSON.parse(localStorage.getItem('order'));
-
-if (!localStorage.getItem('order'))
-   order = [];
+let order = localStorage.getItem('order') ? JSON.parse(localStorage.getItem('order')) : [];
 
 function logout() {
    loginUser = null;

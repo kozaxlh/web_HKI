@@ -4,10 +4,7 @@ const $$ = document.querySelectorAll.bind(document);
 let users = JSON.parse(localStorage.getItem('myUsers'));
 let loginUser = JSON.parse(localStorage.getItem('loginUser'));
 let pageProduct = JSON.parse(localStorage.getItem('pageProduct'))
-let cart = JSON.parse(localStorage.getItem('cart'))
-
-if (!localStorage.getItem('cart'))
-   cart = [];
+let cart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
 
 function render() {
    $('.content-container').innerHTML = `

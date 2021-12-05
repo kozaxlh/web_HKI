@@ -97,7 +97,7 @@
             function openModal(modalElement) {
                modalElement.classList.add('open');
             }
-            let order = JSON.parse(localStorage.getItem('order'))
+            let order = localStorage.getItem('order') ? JSON.parse(localStorage.getItem('order')) : [];
 
             let index = 1;
             let idHTML = ``;

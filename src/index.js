@@ -1,81 +1,67 @@
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 
-let users = JSON.parse(localStorage.getItem('myUsers'));
-let loginUser = JSON.parse(localStorage.getItem('loginUser'));
-let products = JSON.parse(localStorage.getItem('products'));
-let cart = JSON.parse(localStorage.getItem('cart'));
-let order = JSON.parse(localStorage.getItem('order'));
+let users = localStorage.getItem('myUsers') ? JSON.parse(localStorage.getItem('myUsers')) :  [{
+   email: "congty@gmail.com",
+   password: "12345678",
+   phone: "0142125671",
+   typeUser: "admin",
+}];
+let loginUser = JSON.parse(localStorage.getItem('loginUser'))
+let products = localStorage.getItem('products') ? JSON.parse(localStorage.getItem('products')) : [
+   {
+      name: 'Giày thể thao GG08',
+      type: 'Giay',
+      price: 3900000,
+      quantity: 200,
+      img: './img/giaynam.PNG',
+   },
+   {
+      name: 'Giày thể thao GG09',
+      type: 'Giay',
+      price: 3900000,
+      quantity: 200,
+      img: './img/giaynam2.PNG',
+   },
+   {
+      name: 'Giày thể thao GG10',
+      type: 'Giay',
+      price: 3900000,
+      quantity: 200,
+      img: './img/giaynam3.PNG',
+   },
+   {
+      name: 'Áo nam năng động cá tính',
+      type: 'maleCloth',
+      price: 3900000,
+      quantity: 200,
+      img: './img/aonam1.PNG',
+   },
+   {
+      name: 'Áo nam năng động cá tính',
+      type: 'maleCloth',
+      price: 3900000,
+      quantity: 200,
+      img: './img/aonam2.PNG',
+   },
+   {
+      name: 'Áo nam năng động cá tính',
+      type: 'maleCloth',
+      price: 3900000,
+      quantity: 200,
+      img: './img/aonam3.PNG',
+   },
+   {
+      name: 'Áo nữ',
+      type: 'femaleCloth',
+      price: 3900000,
+      quantity: 200,
+      img: './img/aonu1.PNG',
+   },
+];
+let cart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
+let order = localStorage.getItem('order') ? JSON.parse(localStorage.getItem('order')) : [];
 let pageProduct = []
-
-
-if (!localStorage.getItem('myUsers'))
-   users = [{
-      email: "congty@gmail.com",
-      password: "12345678",
-      phone: "0142125671",
-      typeUser: "admin",
-   }]
-
-
-if (!localStorage.getItem('products'))
-   products = [
-      {
-         name: 'Giày thể thao GG08',
-         type: 'Giay',
-         price: 3900000,
-         quantity: 200,
-         img: './img/giaynam.PNG',
-      },
-      {
-         name: 'Giày thể thao GG09',
-         type: 'Giay',
-         price: 3900000,
-         quantity: 200,
-         img: './img/giaynam2.PNG',
-      },
-      {
-         name: 'Giày thể thao GG10',
-         type: 'Giay',
-         price: 3900000,
-         quantity: 200,
-         img: './img/giaynam3.PNG',
-      },
-      {
-         name: 'Áo nam năng động cá tính',
-         type: 'maleCloth',
-         price: 3900000,
-         quantity: 200,
-         img: './img/aonam1.PNG',
-      },
-      {
-         name: 'Áo nam năng động cá tính',
-         type: 'maleCloth',
-         price: 3900000,
-         quantity: 200,
-         img: './img/aonam2.PNG',
-      },
-      {
-         name: 'Áo nam năng động cá tính',
-         type: 'maleCloth',
-         price: 3900000,
-         quantity: 200,
-         img: './img/aonam3.PNG',
-      },
-      {
-         name: 'Áo nữ',
-         type: 'femaleCloth',
-         price: 3900000,
-         quantity: 200,
-         img: './img/aonu1.PNG',
-      },
-   ]
-
-if (!localStorage.getItem('cart'))
-   cart = [];
-
-if (!localStorage.getItem('order'))
-   order = [];
 
 updateLocalStorage()
 
