@@ -75,6 +75,7 @@ Validator({
          phone: data.phone,
          products: [...cart],
          totalPrice: Total,
+         isDelivered: false,
       })
       cart = [];
       localStorage.setItem('order', JSON.stringify(order));

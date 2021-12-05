@@ -98,6 +98,7 @@
                modalElement.classList.add('open');
             }
             let order = JSON.parse(localStorage.getItem('order'))
+
             let index = 1;
             let idHTML = ``;
             let nameHTML = ``
@@ -107,16 +108,19 @@
             let addressHTML = ``
             let checkboxHTML = ``
             for(let item of order) {
+                let checked = ''
+                if(item.isDelivered) {
+                    checked = 'checked disabled'
+                }
                 idHTML+= `<li>${index++}</li>`
                 nameHTML+= `<li>${item.name}</li>`
                 productHTML+= `<li><a href="#" class="btn__showitem" index="${index - 2}">Xem sản phẩm</a></li>`
                 priceHTML+= `<li>$${item.totalPrice}</li>`
                 phoneHTML+= `<li>${item.phone}</li>`
                 addressHTML+= `<li>${item.diachi}</li>`
-                checkboxHTML+= `<li><input type="checkbox" value="None" id="squaredcheck" class="checkbox1" name="check"
-                                checked /></li>`
+                checkboxHTML+= `<li><input type="checkbox" value="None" id="squaredcheck" index="${index - 2}" class="checkbox1" name="check" ${checked}/></li>`
             }
-            let content = document.querySelector('.sales-details');
+            let content = $('.sales-details');
             content.innerHTML= `<ul class="details">
                         <li class="topic">ID</li>
                         ${idHTML}
@@ -147,12 +151,22 @@
                         ${checkboxHTML}
                     </ul>`
             
-            let showBtns = document.querySelectorAll('.btn__showitem')
+            let showBtns = $$('.btn__showitem')
+            let checkBtns = $$('.checkbox1')
             for(let btn of showBtns) {
                 btn.addEventListener('click',() => {
-                    openModal(document.querySelector('.cart'))
+                    openModal($('.cart'))
                     let index = btn.getAttribute('index')
                     renderCart(order[index].products)
+                })
+            }
+
+            for(let btn of checkBtns) {
+                btn.addEventListener('change', () => {
+                    let index = btn.getAttribute('index')
+                    order[index].isDelivered = true;
+                    localStorage.setItem('order', JSON.stringify(order));
+                    btn.disabled = true;
                 })
             }
 
@@ -172,7 +186,6 @@
                      <input type="text" value="${item.count}">
                   </div>
                   <p class="total-price-product">${item.price * item.count} đ</p>
-                  <i class="fas fa-times delete-product"></i>
                </li>`
                }
             
