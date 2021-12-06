@@ -344,8 +344,24 @@ function updateCount(index, count) {
 $('.info-container-footer button').addEventListener('click', () => {
    if (loginUser) {
       alert('Đã thêm vào giỏ hàng')
-      cart.push(createCartProduct(pageProduct));
+      if (cart.length === 0)
+         cart.push(createCartProduct(pageProduct));
+      else {
+         let isFind = false;
+         for (let product of cart) {
+            if (product.name == pageProduct.name) {
+               product.count+= 1;
+               isFind = true;
+               break;
+            }
+         }
+
+         if(!isFind) {
+            cart.push(createCartProduct(pageProduct));
+         }
+      }
       updateProductToCart();
+      renderCart()
    }
    else {
       alert('Bạn phải đăng nhập để có thể mua hàng!!');
