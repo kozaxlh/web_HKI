@@ -281,7 +281,7 @@ for (let item of navItems) {
          if (item.getAttribute('typeproduct').toLowerCase() == product.type.toLowerCase())
             productsHtml.push(product);
       }
-      render();
+      render()
    });
 }
 
@@ -474,22 +474,19 @@ function enableSubmit() {
 }
 
 //render
+function renderNumberPage() {
+   for (let item of $$('.product-pages-number')) {
+      item.addEventListener('click', () => {
+         $('.product-list').innerHTML = htmlProduct(item.getAttribute('index'));
+      })
+   }
+}
+
+renderNumberPage()
+
+
 function render() {
    let myLogo = $('.nav .login-register');
-
-   //Number Page
-   function htmlNumberPage() {
-      let pages = Math.ceil(productsHtml.length / productsInPage);
-      let pagesHTML = [];
-
-      for (let i = 0; i < pages; i++) {
-         pagesHTML.push(
-            `<li class="product-pages-number" index="${i}"><a href="#">${i + 1}</a></li>`
-         )
-      }
-      return pagesHTML.join("");
-   }
-   $('.product-pages').innerHTML = htmlNumberPage();
 
    //render UserLogin
    if (loginUser) {
@@ -498,53 +495,56 @@ function render() {
           <a href="" id="logout" onclick="logout()">Đăng xuất</a>
        </div>`
    }
+
+   //Number Page
+   let pages = Math.ceil(productsHtml.length / productsInPage);
+   let pagesHTML = [];
+   for (let i = 0; i < pages; i++) {
+      if (i === 0)
+         pagesHTML.push(
+            `<li class="product-pages-number" index="${i}"><a href="">${i + 1}</a></li>`
+         )
+      else
+         pagesHTML.push(
+            `<li class="product-pages-number" index="${i}"><a href"#">${i + 1}</a></li>`
+         )
+   }
+
+   $('.product-pages').innerHTML = pagesHTML.join("");
+
    //render product
-   let isInner = false;
+   $('.product-list').innerHTML = htmlProduct();
+   renderNumberPage();
 
-   if (!isInner) {
-      $('.product-list').innerHTML = htmlProduct();
-      isInner = true;
-   }
-
-   if (isInner) {
-      for (let item of $$('.product-pages-number')) {
-         item.addEventListener('click', () => {
-            $('.product-list').innerHTML = htmlProduct(item.getAttribute('index'));
-         })
-      }
-   }
-   //link to Pro Info
    let productBtn = $$('.products a')
-
-   for (let i = 0; i < productBtn.length; i++) {
-      productBtn[i].addEventListener('click', () => {
-         pageProduct = productsHtml[i];
-         localStorage.setItem('pageProduct', JSON.stringify(pageProduct));
-         window.location = "./pro_info.html";
-      })
-   }
-
-   //Handle buyBtn
    const buyBtns = $$('.products .js-buy');
 
-   for (let [index, btn] of buyBtns.entries()) {
-      btn.addEventListener('click', () => {
+   for (let i = 0; i < productBtn.length; i++) {
+      let btnIndex = parseInt(productBtn[i].getAttribute('index'))
+
+      //link to Pro Info
+      productBtn[i].addEventListener('click', () => {
+         pageProduct = productsHtml[btnIndex];
+         localStorage.setItem('pageProduct', JSON.stringify(pageProduct));
+      })
+      //Handle buyBtn
+      buyBtns[i].addEventListener('click', () => {
          if (loginUser) {
             alert('Đã thêm vào giỏ hàng')
             if (cart.length === 0)
-               cart.push(createCartProduct(productsHtml[index]));
+               cart.push(createCartProduct(productsHtml[btnIndex]));
             else {
                let isFind = false;
                for (let product of cart) {
-                  if (product.name == productsHtml[index].name) {
-                     product.count+= 1;
+                  if (product.name == productsHtml[btnIndex].name) {
+                     product.count += 1;
                      isFind = true;
                      break;
                   }
                }
 
-               if(!isFind) {
-                  cart.push(createCartProduct(productsHtml[index]));
+               if (!isFind) {
+                  cart.push(createCartProduct(productsHtml[btnIndex]));
                }
             }
             updateProductToCart();
@@ -565,13 +565,14 @@ function render() {
          return cartProduct;
       }
    }
+
 }
 
 function htmlProduct(index = 0) {
    let html = [];
    for (let i = index * productsInPage; i < index * productsInPage + productsInPage && i < productsHtml.length; i++) {
       html.push(`<li class="products">
-         <a href="#"><img src="${productsHtml[i].img}" alt="product" /></a>
+         <a href="./pro_info.html" index="${i}"><img src="${productsHtml[i].img}" alt="product" /></a>
          <div class="products-content">
             <p class="price">${productsHtml[i].price}đ</p>
             <p class="description">${productsHtml[i].name}</p>
@@ -579,7 +580,6 @@ function htmlProduct(index = 0) {
          </div>
       </li>`)
    }
-
    return html.join("");
 }
 
