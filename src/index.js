@@ -59,6 +59,48 @@ let products = localStorage.getItem('products') ? JSON.parse(localStorage.getIte
       quantity: 200,
       img: './img/aonu1.PNG',
    },
+   {
+      name: 'Áo thun nam unixec',
+      type: 'maleCloth',
+      price: 350000,
+      quantity: 200,
+      img: './img/aonam4.PNG',
+   },
+   {
+      name: 'Áo Amani cao cấp',
+      type: 'maleCloth',
+      price: 900000,
+      quantity: 200,
+      img: './img/aonam5.PNG',
+   },
+   {
+      name: 'Bộ áo quần nam tay dài cổ tròn ấm áp',
+      type: 'maleCloth',
+      price: 350000,
+      quantity: 200,
+      img: './img/aonam6.PNG',
+   },
+   {
+      name: 'Áo nam thời trang 2021',
+      type: 'maleCloth',
+      price: 300000,
+      quantity: 200,
+      img: './img/aonam7.PNG',
+   },
+   {
+      name: 'Áo thun nam VKLAS',
+      type: 'maleCloth',
+      price: 200000,
+      quantity: 200,
+      img: './img/aonam8.PNG',
+   },
+   {
+      name: 'Áo nam Hàn Quốc QTA3',
+      type: 'maleCloth',
+      price: 2000000,
+      quantity: 200,
+      img: './img/aonam9.PNG',
+   },
 ];
 let cart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
 let order = localStorage.getItem('order') ? JSON.parse(localStorage.getItem('order')) : [];
