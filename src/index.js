@@ -1,13 +1,70 @@
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 
-let users = JSON.parse(localStorage.getItem('myUsers'));
-let loginUser = JSON.parse(localStorage.getItem('loginUser'));
-let products = JSON.parse(localStorage.getItem('products'));
-let cart = JSON.parse(localStorage.getItem('cart'));
-let order = JSON.parse(localStorage.getItem('order'));
+let users = localStorage.getItem('myUsers') ? JSON.parse(localStorage.getItem('myUsers')) : [{
+   email: "congty@gmail.com",
+   password: "12345678",
+   phone: "0142125671",
+   typeUser: "admin",
+}
+];
+let loginUser = JSON.parse(localStorage.getItem('loginUser'))
+let products = localStorage.getItem('products') ? JSON.parse(localStorage.getItem('products')) : [
+   {
+      name: 'Giày thể thao GG08',
+      type: 'Giay',
+      price: 3900000,
+      quantity: 200,
+      img: './img/giaynam.PNG',
+   },
+   {
+      name: 'Giày thể thao GG09',
+      type: 'Giay',
+      price: 3900000,
+      quantity: 200,
+      img: './img/giaynam2.PNG',
+   },
+   {
+      name: 'Giày thể thao GG10',
+      type: 'Giay',
+      price: 3900000,
+      quantity: 200,
+      img: './img/giaynam3.PNG',
+   },
+   {
+      name: 'Áo nam năng động cá tính',
+      type: 'maleCloth',
+      price: 3900000,
+      quantity: 200,
+      img: './img/aonam1.PNG',
+   },
+   {
+      name: 'Áo nam năng động cá tính',
+      type: 'maleCloth',
+      price: 3900000,
+      quantity: 200,
+      img: './img/aonam2.PNG',
+   },
+   {
+      name: 'Áo nam năng động cá tính',
+      type: 'maleCloth',
+      price: 3900000,
+      quantity: 200,
+      img: './img/aonam3.PNG',
+   },
+   {
+      name: 'Áo nữ',
+      type: 'femaleCloth',
+      price: 3900000,
+      quantity: 200,
+      img: './img/aonu1.PNG',
+   },
+];
+let cart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
+let order = localStorage.getItem('order') ? JSON.parse(localStorage.getItem('order')) : [];
 let pageProduct = []
 
+<<<<<<< HEAD
 
 if (!localStorage.getItem('myUsers'))
    users = [{
@@ -77,6 +134,8 @@ if (!localStorage.getItem('cart'))
 if (!localStorage.getItem('order'))
    order = [];
 
+=======
+>>>>>>> c466c2216dc54915b00289993c3c0a46083fc537
 updateLocalStorage()
 
 let productsHtml = [...products];
@@ -93,8 +152,6 @@ const navItems = $$('.nav-content-list li a')
 const product = $('.product .product-list')
 
 render();
-
-let productBtn = $$('.products a')
 
 // Modal
 function closeModal(modalElement) {
@@ -170,7 +227,7 @@ let htmlRegister = `
    </div>
    <span class="message-error"></span>
 </div>
-<button class="form-submit">Submit</button>
+<button class="form-submit">Đăng ký</button>
 </form>
 `
 
@@ -204,8 +261,9 @@ let htmlLogin = `
       />
       <span class="message-error"></span>
    </div>
-   <button class="form-submit">Submit</button>
+   <button class="form-submit">Đăng nhập</button>
    <p>Bạn chưa có tài khoản? <a href="#" onclick="tranferRegister()">Đăng ký</a></p>
+   <a href="./login.html">Đăng nhập admin</a>
 </form>
 `
 
@@ -220,8 +278,6 @@ btnOpenLogin.addEventListener('click', () => {
    $('.modal-form').innerHTML = htmlLogin;
    runCheckLogin();
 });
-
-
 
 function tranferRegister() {
    $('.modal-form').innerHTML = htmlRegister
@@ -252,18 +308,41 @@ for (let item of navItems) {
    item.addEventListener('click', () => {
       productsHtml = [];
       for (let product of products) {
-         if (item.getAttribute('typeproduct') == product.type)
+         if (item.getAttribute('typeproduct').toLowerCase() == product.type.toLowerCase())
             productsHtml.push(product);
       }
       render();
    });
 }
 
+function nonAccentVietnamese(str) {
+   str = str.toLowerCase();
+   //     We can also use this instead of from line 11 to line 17
+   //     str = str.replace(/\u00E0|\u00E1|\u1EA1|\u1EA3|\u00E3|\u00E2|\u1EA7|\u1EA5|\u1EAD|\u1EA9|\u1EAB|\u0103|\u1EB1|\u1EAF|\u1EB7|\u1EB3|\u1EB5/g, "a");
+   //     str = str.replace(/\u00E8|\u00E9|\u1EB9|\u1EBB|\u1EBD|\u00EA|\u1EC1|\u1EBF|\u1EC7|\u1EC3|\u1EC5/g, "e");
+   //     str = str.replace(/\u00EC|\u00ED|\u1ECB|\u1EC9|\u0129/g, "i");
+   //     str = str.replace(/\u00F2|\u00F3|\u1ECD|\u1ECF|\u00F5|\u00F4|\u1ED3|\u1ED1|\u1ED9|\u1ED5|\u1ED7|\u01A1|\u1EDD|\u1EDB|\u1EE3|\u1EDF|\u1EE1/g, "o");
+   //     str = str.replace(/\u00F9|\u00FA|\u1EE5|\u1EE7|\u0169|\u01B0|\u1EEB|\u1EE9|\u1EF1|\u1EED|\u1EEF/g, "u");
+   //     str = str.replace(/\u1EF3|\u00FD|\u1EF5|\u1EF7|\u1EF9/g, "y");
+   //     str = str.replace(/\u0111/g, "d");
+   str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
+   str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e");
+   str = str.replace(/ì|í|ị|ỉ|ĩ/g, "i");
+   str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, "o");
+   str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, "u");
+   str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y");
+   str = str.replace(/đ/g, "d");
+   // Some system encode vietnamese combining accent as individual utf-8 characters
+   str = str.replace(/\u0300|\u0301|\u0303|\u0309|\u0323/g, ""); // Huyền sắc hỏi ngã nặng 
+   str = str.replace(/\u02C6|\u0306|\u031B/g, ""); // Â, Ê, Ă, Ơ, Ư
+   return str;
+}
+
 $('.search a').addEventListener('click', () => {
-   let searchValue = $('.search-ip').value.toLowerCase();
+   let searchValue = nonAccentVietnamese($('.search-ip').value.toLowerCase());
    productsHtml = [];
    for (let product of products) {
-      if (product.name.toLowerCase().includes(searchValue))
+      if (nonAccentVietnamese(product.name.toLowerCase()).includes(searchValue))
          productsHtml.push(product);
    }
    $('.search-ip').value = '';
@@ -318,24 +397,24 @@ function runCheckRegister() {
 
    function checkRegister(data) {
       let isFound = false;
-      let s = ``
+      let errorMessage = ``
       for (let user of users) {
          if (data.email === user.email && data.phone === user.phone) {
             isFound = true;
-            s = `Email và số điện thoại này đã được đăng ký`
+            errorMessage = `Email và số điện thoại này đã được đăng ký`
          }
          else if (data.email === user.email) {
             isFound = true;
-            s = `Email này đã được đăng ký. `
+            errorMessage = `Email này đã được đăng ký. `
          }
          else if (data.phone === user.phone) {
             isFound = true;
-            s = `Số điện thoại này đã được đăng ký`
+            errorMessage = `Số điện thoại này đã được đăng ký`
          }
 
          if (isFound) {
             $('.warning').innerHTML = `<div class="block-warning">
-                    <i class="fas fa-exclamation-circle"></i> ${s}</div>`
+                    <i class="fas fa-exclamation-circle"></i> ${errorMessage}</div>`
             break;
          }
       }
@@ -385,12 +464,11 @@ function runCheckLogin() {
    function checkLogin(data) {
       let isFound = false;
       for (let user of users) {
-         if (data.email === user.email) {
-            if (data.password == user.password) {
-               isFound = true;
-               checkUserType(user)
-               break;
-            }
+         if (data.email === user.email && data.password === user.password && user.typeUser === 'member') {
+            isFound = true;
+            loginUser = user;
+            updateLocalStorage();
+            window.location = "./index.html"
          }
       }
       if (!isFound) {
@@ -407,17 +485,6 @@ function runCheckLogin() {
          input.value = '';
       }
    }
-
-   function checkUserType(user) {
-      if (user.typeUser === 'admin')
-         window.location = "./admin.html"
-      else {
-         loginUser = user;
-         updateLocalStorage()
-         window.location = "./index.html"
-      }
-   }
-
    enableSubmit();
 }
 
@@ -440,6 +507,7 @@ function enableSubmit() {
 function render() {
    let myLogo = $('.nav .login-register');
 
+   //Number Page
    function htmlNumberPage() {
       let pages = Math.ceil(productsHtml.length / productsInPage);
       let pagesHTML = [];
@@ -451,21 +519,23 @@ function render() {
       }
       return pagesHTML.join("");
    }
+   $('.product-pages').innerHTML = htmlNumberPage();
 
+   //render UserLogin
    if (loginUser) {
       myLogo.innerHTML = `<div class="user-login">
           <p>Xin chào ${loginUser.email}</p>
           <a href="" id="logout" onclick="logout()">Đăng xuất</a>
        </div>`
    }
+   //render product
    let isInner = false;
-
-   $('.product-pages').innerHTML = htmlNumberPage();
 
    if (!isInner) {
       $('.product-list').innerHTML = htmlProduct();
       isInner = true;
    }
+
    if (isInner) {
       for (let item of $$('.product-pages-number')) {
          item.addEventListener('click', () => {
@@ -473,12 +543,40 @@ function render() {
          })
       }
    }
+   //link to Pro Info
+   let productBtn = $$('.products a')
+
+   for (let i = 0; i < productBtn.length; i++) {
+      productBtn[i].addEventListener('click', () => {
+         pageProduct = productsHtml[i];
+         localStorage.setItem('pageProduct', JSON.stringify(pageProduct));
+         window.location = "./pro_info.html";
+      })
+   }
+
+   //Handle buyBtn
    const buyBtns = $$('.products .js-buy');
 
    for (let [index, btn] of buyBtns.entries()) {
       btn.addEventListener('click', () => {
          if (loginUser) {
-            cart.push(createCartProduct(productsHtml[index]));
+            alert('Đã thêm vào giỏ hàng')
+            if (cart.length === 0)
+               cart.push(createCartProduct(productsHtml[index]));
+            else {
+               let isFind = false;
+               for (let product of cart) {
+                  if (product.name == productsHtml[index].name) {
+                     product.count+= 1;
+                     isFind = true;
+                     break;
+                  }
+               }
+
+               if(!isFind) {
+                  cart.push(createCartProduct(productsHtml[index]));
+               }
+            }
             updateProductToCart();
             renderCart();
          }
@@ -489,7 +587,7 @@ function render() {
             runCheckLogin();
          }
       })
-   
+
       function createCartProduct(product) {
          let cartProduct = product;
          cartProduct.count = 1;
@@ -507,7 +605,7 @@ function htmlProduct(index = 0) {
          <div class="products-content">
             <p class="price">${productsHtml[i].price}đ</p>
             <p class="description">${productsHtml[i].name}</p>
-            <button class="buy js-buy">Mua ngay</button>
+            <button class="buy js-buy">Thêm vào giỏ hàng</button>
          </div>
       </li>`)
    }
@@ -519,13 +617,6 @@ function logout() {
    loginUser = null;
    updateLocalStorage();
    render();
-}
-for (let i = 0; i < productBtn.length ;i++) {
-   productBtn[i].addEventListener('click', () => {
-      pageProduct = productsHtml[i];
-      localStorage.setItem('pageProduct', JSON.stringify(pageProduct));
-      window.location = "./pro_info.html";
-   })
 }
 
 //cart
@@ -539,17 +630,18 @@ function deleteCart(index, quantity = 1) {
 }
 
 function updateCount(index, count) {
-   if(count < 1) return;
+   if (count < 1) return;
    cart[index].count = count;
+   updateProductToCart();
    renderCart()
 }
 
 function renderCart() {
    let cartHtml = ``;
    let Total = 0;
-   cart.forEach(item => Total+= item.count * item.price)
+   cart.forEach(item => Total += item.count * item.price)
 
-   for(let item of cart) {
+   for (let item of cart) {
       cartHtml += `<li>
       <div class="info"><img src="${item.img}" alt="img">
          <p>${item.name}</p>
@@ -572,15 +664,15 @@ function renderCart() {
    let addCountBtns = $$('.add');
    let removeCountBtns = $$('.remove');
 
-   for(let i = 0 ;i < deleteBtns.length;i++) {
+   for (let i = 0; i < deleteBtns.length; i++) {
       deleteBtns[i].addEventListener('click', () => {
          deleteCart(i);
          updateProductToCart();
          renderCart();
       })
 
-      addCountBtns[i].addEventListener('click', () => updateCount(i,cart[i].count + 1))
-      removeCountBtns[i].addEventListener('click',() => updateCount(i,cart[i].count - 1))
+      addCountBtns[i].addEventListener('click', () => updateCount(i, cart[i].count + 1))
+      removeCountBtns[i].addEventListener('click', () => updateCount(i, cart[i].count - 1))
    }
 
    $('.total-price').innerHTML = `${Total} đ`;
@@ -604,10 +696,10 @@ var navlist = $('.fa-chevron-down')
 navlist.onclick = function name(params) {
    let isclose = nav.clientHeight === 48;
    if (isclose) {
-       nav.style.height = 'auto'
+      nav.style.height = 'auto'
    }
    else {
-       nav.style.height = null
+      nav.style.height = null
    }
 }
 
