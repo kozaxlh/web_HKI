@@ -23,49 +23,49 @@ if (!localStorage.getItem('products'))
       {
          name: 'Giày thể thao GG08',
          type: 'Giay',
-         price: 3900000,
+         price: 3500000,
          quantity: 200,
          img: './img/giaynam.PNG',
       },
       {
          name: 'Giày thể thao GG09',
          type: 'Giay',
-         price: 3900000,
+         price: 1200300,
          quantity: 200,
          img: './img/giaynam2.PNG',
       },
       {
          name: 'Giày thể thao GG10',
          type: 'Giay',
-         price: 3900000,
+         price: 700000,
          quantity: 200,
          img: './img/giaynam3.PNG',
       },
       {
-         name: 'Áo nam năng động cá tính',
+         name: 'Áo thun nam năng động cá tính',
          type: 'maleCloth',
-         price: 3900000,
+         price: 900000,
          quantity: 200,
          img: './img/aonam1.PNG',
       },
       {
-         name: 'Áo nam năng động cá tính',
+         name: 'Bộ áo quần jiusport',
          type: 'maleCloth',
-         price: 3900000,
+         price: 12000000,
          quantity: 200,
          img: './img/aonam2.PNG',
       },
       {
-         name: 'Áo nam năng động cá tính',
+         name: 'Bộ 3 áo thun viciican miasa',
          type: 'maleCloth',
-         price: 3900000,
+         price: 210000,
          quantity: 200,
          img: './img/aonam3.PNG',
       },
       {
-         name: 'Áo nữ',
+         name: 'Áo banaca lona giành cho nữ',
          type: 'femaleCloth',
-         price: 3900000,
+         price: 99000990,
          quantity: 200,
          img: './img/aonu1.PNG',
       },
@@ -232,13 +232,13 @@ function tranferRegister() {
 function viewTopSale(inp) {
    switch (inp) {
       case 'ngay':
-         listtopsale.innerHTML = '<ul class="product-list"><li class="products" ><img src="./img/aonu1.PNG" alt="product"><div class="products-content"><p class="price">3.900.000 đ</p><p class="description">áo nữ sexy </p><button class="buy">Mua ngay</button></div></li> <li class="products" ><img src="./img/aonu1.PNG" alt="product"><div class="products-content"><p class="price">3.900.000 đ</p><p class="description">áo nữ sexy </p><button class="buy">Mua ngay</button></div></li></ul> '
+         listtopsale.innerHTML = '<ul class="product-list"><li class="products" ><img src="./img/aonu1.PNG" alt="product"><div class="products-content"><p class="price">3.900.000 đ</p><p class="description">áo banacani lona giành cho nữ </p><button class="buy">Mua ngay</button></div></li> <li class="products" ><img src="./img/aonam1.PNG" alt="product"><div class="products-content"><p class="price">300000 đ</p><p class="description">Áo nam năng động cá tính</p><button class="buy">Mua ngay</button></div></li></ul> '
          break;
       case 'thang':
-         listtopsale.innerHTML = '<ul class="product-list"><li class="products" ><img src="./img/aonu1.PNG" alt="product"><div class="products-content"><p class="price">3.900.000 đ</p><p class="description">áo nữ sexy </p><button class="buy">Mua ngay</button></div></li><li class="products" ><img src="./img/aonam1.PNG" alt="product"><div class="products-content"><p class="price">3.900.000 đ</p><p class="description">Áo nam năng động cá tính</p><button class="buy">Mua ngay</button></div></li> </ul> '
+         listtopsale.innerHTML = '<ul class="product-list"><li class="products" ><img src="./img/aonu1.PNG" alt="product"><div class="products-content"><p class="price">3.900.000 đ</p><p class="description">áo banacani lona giành cho nữ </p><button class="buy">Mua ngay</button></div></li><li class="products" ><img src="./img/aonam1.PNG" alt="product"><div class="products-content"><p class="price">300000 đ</p><p class="description">Áo nam năng động cá tính</p><button class="buy">Mua ngay</button></div></li> </ul> '
          break;
       case 'nam':
-         listtopsale.innerHTML = '<ul class="product-list"><li class="products" ><img src="./img/giaynam.PNG" alt="product"><div class="products-content"><p class="price">3.900.000 đ</p><p class="description">Giày thể thao GG08</p><button class="buy">Mua ngay</button></div></li><li class="products" ><img src="./img/aonu1.PNG" alt="product"><div class="products-content"><p class="price">3.900.000 đ</p><p class="description">áo nữ sexy </p><button class="buy">Mua ngay</button></div></li> </ul> '
+         listtopsale.innerHTML = '<ul class="product-list"><li class="products" ><img src="./img/giaynam.PNG" alt="product"><div class="products-content"><p class="price">3.900.000 đ</p><p class="description">Giày thể thao GG08</p><button class="buy">Mua ngay</button></div></li><li class="products" ><img src="./img/aonu1.PNG" alt="product"><div class="products-content"><p class="price">99000990 đ</p><p class="description">áo banacani lona giành cho nữ </p><button class="buy">Mua ngay</button></div></li> </ul> '
          break;
 
       default:

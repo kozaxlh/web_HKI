@@ -143,6 +143,7 @@ a {
 }
 
 .content {
+   background: #369ad6;
    margin-top: 135px;
    min-height: 70vh;
 }

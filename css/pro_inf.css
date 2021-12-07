@@ -18,12 +18,14 @@
 }
 
 .info-container{
+    min-width: 440px;
     position: relative;
     line-height: 30px;
     margin-left: 20px;
     color: #faa32c;
     border: 2px solid #eee;
     padding: 10px;
+    min-height: 300px;
 }
 
 .info-container .discount{
