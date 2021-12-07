@@ -29,6 +29,7 @@ function render() {
       $('.nav .login-register').innerHTML = `<div class="user-login">
           <p>Xin chào ${loginUser.email}</p>
           <a href="" id="logout" onclick="logout()">Đăng xuất</a>
+          <a href="./check_order.html" id="logout">Xem đơn hàng</a>
        </div>`
    }
 }

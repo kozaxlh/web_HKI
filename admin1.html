@@ -116,7 +116,7 @@
                 idHTML+= `<li>${index++}</li>`
                 nameHTML+= `<li>${item.name}</li>`
                 productHTML+= `<li><a href="#" class="btn__showitem" index="${index - 2}">Xem sản phẩm</a></li>`
-                priceHTML+= `<li>$${item.totalPrice}</li>`
+                priceHTML+= `<li>${item.totalPrice}đ</li>`
                 phoneHTML+= `<li>${item.phone}</li>`
                 addressHTML+= `<li>${item.diachi}</li>`
                 checkboxHTML+= `<li><input type="checkbox" value="None" id="squaredcheck" index="${index - 2}" class="checkbox1" name="check" ${checked}/></li>`
@@ -175,7 +175,6 @@
                     btn.disabled = true;
                 })
             }
-
 
             function renderCart(cart) {
                let cartHtml = ``;

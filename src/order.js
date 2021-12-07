@@ -8,7 +8,6 @@ let order = localStorage.getItem('order') ? JSON.parse(localStorage.getItem('ord
 function logout() {
    loginUser = null;
    localStorage.setItem('loginUser', JSON.stringify(loginUser))
-   renderCart();
 }
 
 let Total = 0;
@@ -32,7 +31,8 @@ function renderCart() {
    if (loginUser) {
       $('.nav .login-register').innerHTML = `<div class="user-login">
           <p>Xin chào ${loginUser.email}</p>
-          <a href="" id="logout" onclick="logout()">Đăng xuất</a>
+          <a href="./index.html" id="logout" onclick="logout()">Đăng xuất</a>
+          <a href="./check_order.html" id="logout">Xem đơn hàng</a>
        </div>`
    }
 
@@ -68,6 +68,7 @@ Validator({
    onSubmit: function (data) {
       let today = new Date();
       order.push({
+         email: loginUser.email,
          name: data.name,
          diachi: data.address,
          phone: data.phone,

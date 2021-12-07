@@ -102,6 +102,8 @@ let products = localStorage.getItem('products') ? JSON.parse(localStorage.getIte
       img: './img/aonam9.PNG',
    },
 ];
+
+
 let cart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
 let order = localStorage.getItem('order') ? JSON.parse(localStorage.getItem('order')) : [];
 let pageProduct = []
@@ -109,7 +111,7 @@ let pageProduct = []
 updateLocalStorage()
 
 let productsHtml = [...products];
-let productsInPage = 8;
+let productsInPage = 10;
 
 const modal = $('.modal')
 const btnOpenRegister = $('.js-register')
@@ -493,6 +495,7 @@ function render() {
       myLogo.innerHTML = `<div class="user-login">
           <p>Xin chào ${loginUser.email}</p>
           <a href="" id="logout" onclick="logout()">Đăng xuất</a>
+          <a href="./check_order.html" id="logout">Xem đơn hàng</a>
        </div>`
    }
 

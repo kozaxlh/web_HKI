@@ -119,7 +119,7 @@ function htmlProduct() {
       <h3>${product.name}</h3>
     </span>
     <span>
-      <h3>$${product.price}</h3>
+      <h3>${product.price}đ</h3>
     </span>
     <div class="right">
       <a href="#" style="text-decoration: none" class="content__edititem">
