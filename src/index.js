@@ -13,49 +13,49 @@ let products = localStorage.getItem('products') ? JSON.parse(localStorage.getIte
    {
       name: 'Giày thể thao GG08',
       type: 'Giay',
-      price: 3900000,
+      price: 3500000,
       quantity: 200,
       img: './img/giaynam.PNG',
    },
    {
       name: 'Giày thể thao GG09',
       type: 'Giay',
-      price: 3900000,
+      price: 1200300,
       quantity: 200,
       img: './img/giaynam2.PNG',
    },
    {
       name: 'Giày thể thao GG10',
       type: 'Giay',
-      price: 3900000,
+      price: 700000,
       quantity: 200,
       img: './img/giaynam3.PNG',
    },
    {
-      name: 'Áo nam năng động cá tính',
+      name: 'Áo thun nam năng động cá tính',
       type: 'maleCloth',
-      price: 3900000,
+      price: 900000,
       quantity: 200,
       img: './img/aonam1.PNG',
    },
    {
-      name: 'Áo nam năng động cá tính',
+      name: 'Bộ áo quần jiusport',
       type: 'maleCloth',
-      price: 3900000,
+      price: 12000000,
       quantity: 200,
       img: './img/aonam2.PNG',
    },
    {
-      name: 'Áo nam năng động cá tính',
+      name: 'Bộ 3 áo thun viciican miasa',
       type: 'maleCloth',
-      price: 3900000,
+      price: 210000,
       quantity: 200,
       img: './img/aonam3.PNG',
    },
    {
-      name: 'Áo nữ',
+      name: 'Áo banaca lona giành cho nữ',
       type: 'femaleCloth',
-      price: 3900000,
+      price: 99000990,
       quantity: 200,
       img: './img/aonu1.PNG',
    },
@@ -64,78 +64,6 @@ let cart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart'
 let order = localStorage.getItem('order') ? JSON.parse(localStorage.getItem('order')) : [];
 let pageProduct = []
 
-<<<<<<< HEAD
-
-if (!localStorage.getItem('myUsers'))
-   users = [{
-      email: "congty@gmail.com",
-      password: "12345678",
-      phone: "0142125671",
-      typeUser: "admin",
-   }]
-
-
-if (!localStorage.getItem('products'))
-   products = [
-      {
-         name: 'Giày thể thao GG08',
-         type: 'Giay',
-         price: 3500000,
-         quantity: 200,
-         img: './img/giaynam.PNG',
-      },
-      {
-         name: 'Giày thể thao GG09',
-         type: 'Giay',
-         price: 1200300,
-         quantity: 200,
-         img: './img/giaynam2.PNG',
-      },
-      {
-         name: 'Giày thể thao GG10',
-         type: 'Giay',
-         price: 700000,
-         quantity: 200,
-         img: './img/giaynam3.PNG',
-      },
-      {
-         name: 'Áo thun nam năng động cá tính',
-         type: 'maleCloth',
-         price: 900000,
-         quantity: 200,
-         img: './img/aonam1.PNG',
-      },
-      {
-         name: 'Bộ áo quần jiusport',
-         type: 'maleCloth',
-         price: 12000000,
-         quantity: 200,
-         img: './img/aonam2.PNG',
-      },
-      {
-         name: 'Bộ 3 áo thun viciican miasa',
-         type: 'maleCloth',
-         price: 210000,
-         quantity: 200,
-         img: './img/aonam3.PNG',
-      },
-      {
-         name: 'Áo banaca lona giành cho nữ',
-         type: 'femaleCloth',
-         price: 99000990,
-         quantity: 200,
-         img: './img/aonu1.PNG',
-      },
-   ]
-
-if (!localStorage.getItem('cart'))
-   cart = [];
-
-if (!localStorage.getItem('order'))
-   order = [];
-
-=======
->>>>>>> c466c2216dc54915b00289993c3c0a46083fc537
 updateLocalStorage()
 
 let productsHtml = [...products];
