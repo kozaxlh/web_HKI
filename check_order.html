@@ -175,10 +175,10 @@
                priceHTML += `<li>${item.totalPrice}đ</li>`;
                dateHTML += `<li>${item.date}</li>`;
                if(item.isDelivered) {
-                  statusHTML+= 'Đã giao hàng'
+                  statusHTML+= '<li>Đã giao hàng</li>'
                }
                else {
-                  statusHTML+= 'Đang xử lí'
+                  statusHTML+= '<li>Đang xử lí</li>'
                }
             }
          }
@@ -202,7 +202,7 @@
                      </ul>
                      <ul class="details">
                         <li class="topic">Tình trạng đơn hàng</li>
-                        <li>${statusHTML}</li>
+                        ${statusHTML}
                      </ul>`;
                      
          render();
