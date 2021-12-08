@@ -121,7 +121,6 @@ const topsale = $('.top-sale select')
 const listtopsale = $('.top-sale .product-list')
 
 const navItems = $$('.nav-content-list li a')
-const product = $('.product .product-list')
 
 render();
 
@@ -275,7 +274,6 @@ function viewTopSale(inp) {
 }
 
 //Lọc product
-
 for (let item of navItems) {
    item.addEventListener('click', () => {
       productsHtml = [];
@@ -286,6 +284,17 @@ for (let item of navItems) {
       render()
    });
 }
+
+$('.search a').addEventListener('click', () => {
+   let searchValue = nonAccentVietnamese($('.search-ip').value.toLowerCase());
+   productsHtml = [];
+   for (let product of products) {
+      if (nonAccentVietnamese(product.name.toLowerCase()).includes(searchValue))
+         productsHtml.push(product);
+   }
+   $('.search-ip').value = '';
+   render();
+})
 
 function nonAccentVietnamese(str) {
    str = str.toLowerCase();
@@ -309,18 +318,6 @@ function nonAccentVietnamese(str) {
    str = str.replace(/\u02C6|\u0306|\u031B/g, ""); // Â, Ê, Ă, Ơ, Ư
    return str;
 }
-
-$('.search a').addEventListener('click', () => {
-   let searchValue = nonAccentVietnamese($('.search-ip').value.toLowerCase());
-   productsHtml = [];
-   for (let product of products) {
-      if (nonAccentVietnamese(product.name.toLowerCase()).includes(searchValue))
-         productsHtml.push(product);
-   }
-   $('.search-ip').value = '';
-   render();
-})
-
 
 //========Validate=========
 //Register form
@@ -476,16 +473,13 @@ function enableSubmit() {
 }
 
 //render
-function renderNumberPage() {
+function renderProduct() {
    for (let item of $$('.product-pages-number')) {
       item.addEventListener('click', () => {
          $('.product-list').innerHTML = htmlProduct(item.getAttribute('index'));
       })
    }
 }
-
-renderNumberPage()
-
 
 function render() {
    let myLogo = $('.nav .login-register');
@@ -517,7 +511,7 @@ function render() {
 
    //render product
    $('.product-list').innerHTML = htmlProduct();
-   renderNumberPage();
+   renderProduct();
 
    let productBtn = $$('.products a')
    const buyBtns = $$('.products .js-buy');

@@ -359,7 +359,6 @@ nav .profile-details i{
 }
 .form-addItem {
     width: 550px;
-    height: 420px;
     background-color: white;
     margin: auto;
     z-index: 1;
@@ -406,6 +405,7 @@ nav .profile-details i{
     height: 40px;
     margin-top: 4px;
     margin-left: 14px;
+    margin-bottom: 12px;
 }
 /*btn edititem*/
 .modal-content__editItem{
