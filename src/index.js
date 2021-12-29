@@ -103,7 +103,6 @@ let products = localStorage.getItem('products') ? JSON.parse(localStorage.getIte
    },
 ];
 
-
 let cart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
 let order = localStorage.getItem('order') ? JSON.parse(localStorage.getItem('order')) : [];
 let pageProduct = []
@@ -111,7 +110,7 @@ let pageProduct = []
 updateLocalStorage()
 
 let productsHtml = [...products];
-let productsInPage = 10;
+let productsInPage = 14;
 
 const modal = $('.modal')
 const btnOpenRegister = $('.js-register')
@@ -284,7 +283,6 @@ for (let item of navItems) {
       render()
    });
 }
-
 $('.search a').addEventListener('click', () => {
    let searchValue = nonAccentVietnamese($('.search-ip').value.toLowerCase());
    productsHtml = [];
